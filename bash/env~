@@ -1,0 +1,3 @@
+export EDITOR="sublime -w"
+export PATH=~/bin:$PATH
+export PATH=$PATH:/bin

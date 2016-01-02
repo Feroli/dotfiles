@@ -1,0 +1,29 @@
+export EDITOR="sublime -w"
+export PATH=~/bin:$PATH
+export PATH=$PATH:/bin
+
+export GITAWAREPROMPT=~/.bash/git-aware-prompt
+source "${GITAWAREPROMPT}/main.sh"
+export PATH=/usr/local/sbin:$PATH
+export MONGO_PATH=/usr/local/mongodb
+export PATH=$PATH:$MONGO_PATH/bin
+export PATH=/Applications/Emacs.app/Contents/MacOS/bin:$PATH
+export PATH=/usr/local/mysql/bin:$PATH
+export PATH=/usr/local/bin:$PATH
+export PS1="\u@\h \w \[$txtcyn\]\$git_branch\[$txtred\]\$git_dirty\[$txtrst\]\$ "
+export SUDO_PS1="\[$bakred\]\u@\h\[$txtrst\] \w\$ "
+
+
+
+test -e ${HOME}/.iterm2_shell_integration.bash && source ${HOME}/.iterm2_shell_integration.bash
+
+code () { VSCODE_CWD=/Users/Feroli open -n -b com.microsoft.VSCode --args  ;}
+
+##
+# Your previous /Users/Feroli/.bash_profile file was backed up as /Users/Feroli/.bash_profile.macports-saved_2015-12-30_at_10:53:32
+##
+
+# MacPorts Installer addition on 2015-12-30_at_10:53:32: adding an appropriate PATH variable for use with MacPorts.
+export PATH="/opt/local/bin:/opt/local/sbin:$PATH"
+# Finished adapting your PATH environment variable for use with MacPorts.
+
