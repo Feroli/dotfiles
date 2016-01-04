@@ -9,14 +9,16 @@ alias cgi='open -a "Google Chrome" --args --incognito' # if browser is closed
 
 # Navigation
 alias ..='cd ..'
+alias ...='cd .. && cd ..'
 alias cdd='cd -'
 alias cdbb='cd ~/bin/dotfiles/bash'
+alias cds='cd ~/sites'
 
 # Quicker cd
 alias cg='cd /Library/Ruby/Gems/1.8/gems/'
 function cr() {
  cd ~/repos/$*
-}
+ }
 
 # utility
 alias sb='source ~/.bashrc'
@@ -24,7 +26,8 @@ alias reload='source ~/bin/dotfiles/bash/aliases'
 alias ea='sublime -w ~/bin/dotfiles/bash/aliases && reload'
 alias ee='sublime ~/bin/dotfiles/bash/env'
 alias cl='clear'
-alias trash='rm -rf ~/.Trash/*'
+alias trash='rm -rf ~/.Trash/*' # cleans up the bin
+alias imgcat='bash ~/bin/dotfiles/imgcat' # prints an image to the console
 
 
 # Processes
@@ -51,7 +54,7 @@ alias gst='git status'
 alias gt='git status'
 alias g='git status'
 alias eg='mate .git/config'
-# Git clone from GitHub
+#Git clone from GitHub
 function gch() {
   git clone git://github.com/$USER/$1.git
 }
