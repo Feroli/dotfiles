@@ -3,6 +3,7 @@ alias o='open . &'
 alias of='open -a Firefox'
 alias os='open -a safari'
 alias og='Google' # browser must be opened first
+alias ogs='og "http://google.co.uk/#q="' # open google and search
 alias ogi='Google --incognito' # browser must be opened first
 alias cg='open -a "Google Chrome"' # if browser is closed
 alias cgi='open -a "Google Chrome" --args --incognito' # if browser is closed
@@ -15,10 +16,10 @@ alias cdbb='cd ~/bin/dotfiles/bash'
 alias cds='cd ~/sites'
 
 # Quicker cd
-alias cg='cd /Library/Ruby/Gems/1.8/gems/'
-function cr() {
- cd ~/repos/$*
- }
+#alias cg='cd /Library/Ruby/Gems/1.8/gems/'
+#function cr() {
+ #cd ~/repos/$*
+ #}
 
 # utility
 alias sb='source ~/.bashrc'
