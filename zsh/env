@@ -1,1 +1,24 @@
-. ~/bin/dotfiles/bash/env
+
+export EDITOR="sublime -w"
+export PATH=~/bin:$PATH
+export PATH=$PATH:/bin
+
+
+export PATH=/usr/local/sbin:$PATH
+export MONGO_PATH=/usr/local/mongodb
+export PATH=$PATH:$MONGO_PATH/bin
+export PATH=/Applications/Emacs.app/Contents/MacOS/bin:$PATH
+export PATH=/usr/local/mysql/bin:$PATH
+export PATH=/usr/local/bin:$PATH
+
+# rvm
+[[ -s "$HOME/.rvm/scripts/rvm"  ]] && . "$HOME/.rvm/scripts/rvm"
+
+
+# Java configuration
+export JAVA_HOME="$HOME/Applications/java"
+
+
+test -e ${HOME}/.iterm2_shell_integration.bash && source ${HOME}/.iterm2_shell_integration.bash
+
+code () { VSCODE_CWD=/Users/Feroli open -n -b com.microsoft.VSCode --args  ;}
