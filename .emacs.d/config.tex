@@ -1,0 +1,1501 @@
+% Created 2016-02-25 Thu 10:26
+\documentclass[11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{fixltx2e}
+\usepackage{graphicx}
+\usepackage{longtable}
+\usepackage{float}
+\usepackage{wrapfig}
+\usepackage{rotating}
+\usepackage[normalem]{ulem}
+\usepackage{amsmath}
+\usepackage{textcomp}
+\usepackage{marvosym}
+\usepackage{wasysym}
+\usepackage{amssymb}
+\usepackage{hyperref}
+\tolerance=1000
+\author{Fernando}
+\date{\today}
+\title{Emacs Configuration}
+\hypersetup{
+  pdfkeywords={},
+  pdfsubject={},
+  pdfcreator={Emacs 25.0.91.1 (Org mode 8.2.10)}}
+\begin{document}
+
+\maketitle
+\tableofcontents
+
+This emacs configuration is largely influenced by \href{https://github.com/danielmai/.emacs.d}{Mai's emacs configuration}
+
+\section{Installing Emacs}
+\label{sec-1}
+
+On OS X, \href{http://brew.sh/}{homebrew} is an easy way to install emacs.
+
+Here's what the parameter means.
+\begin{description}
+\item[{\verb~--with-cocoa~}] installs emacs with the OS X GUI version
+\item[{\verb~--with-imagemagick~}] installs emacs with imagemagick support for image processing
+\item[{\verb~--with-gnutls~}] installs emacs with GnuTLS to utilize encrypted SSL and TLS connections
+\end{description}
+
+\begin{verbatim}
+brew install emacs --with-cocoa --with-imagemagick --with-gnutls
+\end{verbatim}
+
+\section{Personal Information}
+\label{sec-2}
+
+\begin{verbatim}
+(setq user-full-name "Fernando Ania"
+      user-mail-address "javierania21@gmail.com")
+\end{verbatim}
+
+\section{Customize settings}
+\label{sec-3}
+
+Set up the customize file to its own separate file, instead of saving
+customize settings in \href{init.el}{init.el}.
+
+\begin{verbatim}
+(setq custom-file (expand-file-name "custom.el" user-emacs-directory))
+(load custom-file)
+\end{verbatim}
+
+\section{Theme}
+\label{sec-4}
+\subsection{Atom One dark theme}
+\label{sec-4-1}
+
+\begin{verbatim}
+(use-package atom-one-dark-theme
+  :if (window-system)
+  :ensure t
+  :init 
+  (progn (load-theme 'atom-one-dark t)))
+\end{verbatim}
+
+\subsection{Solarized theme}
+\label{sec-4-2}
+
+Here's some configuration for \href{https://github.com/bbatsov/solarized-emacs/}{bbatsov's solarized themes}.
+
+\begin{verbatim}
+(use-package solarized-theme
+  :defer 10
+  :init
+  (setq solarized-use-variable-pitch nil)
+  :ensure t)
+\end{verbatim}
+
+\subsection{Monokai theme}
+\label{sec-4-3}
+
+\begin{verbatim}
+(use-package monokai-theme
+  :if (window-system)
+  :ensure t
+  :init
+  (setq monokai-use-variable-pitch nil))
+\end{verbatim}
+
+\subsection{Waher theme}
+\label{sec-4-4}
+
+\begin{verbatim}
+(use-package waher-theme
+  if (window-system)
+  :ensure t
+  :init
+  (load-theme 'waher))
+\end{verbatim}
+
+\subsection{Convenient theme functions}
+\label{sec-4-5}
+
+\begin{verbatim}
+(defun switch-theme (theme)
+  "Disables any currently active themes and loads THEME."
+  ;; This interactive call is taken from `load-theme'
+  (interactive
+   (list
+    (intern (completing-read "Load custom theme: "
+                             (mapc 'symbol-name
+                                   (custom-available-themes))))))
+  (let ((enabled-themes custom-enabled-themes))
+    (mapc #'disable-theme custom-enabled-themes)
+    (load-theme theme t)))
+
+(defun disable-active-themes ()
+  "Disables any currently active themes listed in `custom-enabled-themes'."
+  (interactive)
+  (mapc #'disable-theme custom-enabled-themes))
+
+(bind-key "s-<f12>" 'switch-theme)
+(bind-key "s-<f11>" 'disable-active-themes)
+\end{verbatim}
+
+\section{Font}
+\label{sec-5}
+
+\href{http://levien.com/type/myfonts/inconsolata.html}{Inconsolata} is a nice monospaced font.
+
+To install it on OS X, you can use Homebrew with \href{http://caskroom.io/}{Homebrew Cask}.
+
+\begin{verbatim}
+# You may need to run these two lines if you haven't set up Homebrew
+# Cask and its fonts formula.
+brew install caskroom/cask/brew-cask
+brew tap caskroom/fonts
+
+brew cask install font-inconsolata
+\end{verbatim}
+
+And here's how we tell Emacs to use the font we want to use.
+
+\begin{verbatim}
+(add-to-list 'default-frame-alist
+             '(font . "Inconsolata-14"))
+\end{verbatim}
+
+\section{Sane defaults}
+\label{sec-6}
+
+Let's start with some sane defaults, shall we?
+
+Sources for this section include \href{https://github.com/magnars/.emacs.d/blob/master/settings/sane-defaults.el}{Magnars Sveen} and \href{http://pages.sachachua.com/.emacs.d/Sacha.html}{Sacha Chua}.
+
+\begin{verbatim}
+;; These functions are useful. Activate them.
+(put 'downcase-region 'disabled nil)
+(put 'upcase-region 'disabled nil)
+(put 'narrow-to-region 'disabled nil)
+(put 'dired-find-alternate-file 'disabled nil)
+
+;; Answering just 'y' or 'n' will do
+(defalias 'yes-or-no-p 'y-or-n-p)
+
+;; Keep all backup and auto-save files in one directory
+(setq backup-directory-alist '(("." . "~/.saves")))
+(setq auto-save-file-name-transforms '((".*" "~/.saves/auto-save-list/" t)))
+
+;; UTF-8 please
+(setq locale-coding-system 'utf-8) ; pretty
+(set-terminal-coding-system 'utf-8) ; pretty
+(set-keyboard-coding-system 'utf-8) ; pretty
+(set-selection-coding-system 'utf-8) ; please
+(prefer-coding-system 'utf-8) ; with sugar on top
+(setq-default indent-tabs-mode nil)
+
+;; Turn off the blinking cursor
+(blink-cursor-mode -1)
+
+(setq-default indent-tabs-mode nil)
+(setq-default indicate-empty-lines t)
+
+;; Don't count two spaces after a period as the end of a sentence.
+;; Just one space is needed.
+(setq sentence-end-double-space nil)
+
+;; delete the region when typing, just like as we expect nowadays.
+(delete-selection-mode t)
+
+(show-paren-mode t)
+
+(column-number-mode t)
+
+(global-visual-line-mode)
+(diminish 'visual-line-mode)
+
+(setq uniquify-buffer-name-style 'forward)
+
+;; -i gets alias definitions from .bash_profile
+(setq shell-command-switch "-ic")
+
+;; Don't beep at me
+(setq visible-bell t)
+\end{verbatim}
+
+The following function for \verb~occur-dwim~ is taken from \href{https://github.com/abo-abo}{Oleh Krehel} from
+\href{http://oremacs.com/2015/01/26/occur-dwim/}{his blog post at (or emacs}. It takes the current region or the symbol
+at point as the default value for occur.
+
+\begin{verbatim}
+(defun occur-dwim ()
+  "Call `occur' with a sane default."
+  (interactive)
+  (push (if (region-active-p)
+            (buffer-substring-no-properties
+             (region-beginning)
+             (region-end))
+          (thing-at-point 'symbol))
+        regexp-history)
+  (call-interactively 'occur))
+
+(bind-key "M-s o" 'occur-dwim)
+\end{verbatim}
+
+Here we make page-break characters look pretty, instead of appearing
+as \texttt{\textasciicircum{}L} in Emacs. \href{http://ericjmritz.name/2015/08/29/using-page-breaks-in-gnu-emacs/}{Here's an informative article called "Using
+Page-Breaks in GNU Emacs" by Eric J. M. Ritz.}
+
+\begin{verbatim}
+(use-package page-break-lines
+  :ensure t)
+\end{verbatim}
+
+\section{Mac customizations}
+\label{sec-7}
+
+There are configurations to make when running Emacs on OS X (hence the
+"darwin" system-type check).
+
+\begin{verbatim}
+(let ((is-mac (string-equal system-type "darwin")))
+  (when is-mac
+    ;; delete files by moving them to the trash
+    (setq delete-by-moving-to-trash t)
+    (setq trash-directory "~/.Trash")
+
+    ;; Don't make new frames when opening a new file with Emacs
+    (setq ns-pop-up-frames nil)
+
+    ;; set the Fn key as the hyper key
+    (setq ns-function-modifier 'hyper)
+
+    ;; Use Command-` to switch between Emacs windows (not frames)
+    (bind-key "s-`" 'other-window)
+
+    ;; Use Command-Shift-` to switch Emacs frames in reverse
+    (bind-key "s-~" (lambda() () (interactive) (other-window -1)))
+
+    ;; Because of the keybindings above, set one for `other-frame'
+    (bind-key "s-1" 'other-frame)
+
+    ;; Fullscreen!
+    (setq ns-use-native-fullscreen nil) ; Not Lion style
+    (bind-key "<s-return>" 'toggle-frame-fullscreen)
+
+    ;; buffer switching
+    (bind-key "s-{" 'previous-buffer)
+    (bind-key "s-}" 'next-buffer)
+
+    ;; Compiling
+    (bind-key "H-c" 'compile)
+    (bind-key "H-r" 'recompile)
+    (bind-key "H-s" (defun save-and-recompile () (interactive) (save-buffer) (recompile)))
+
+    ;; disable the key that minimizes emacs to the dock because I don't
+    ;; minimize my windows
+    ;; (global-unset-key (kbd "C-z"))
+
+    (defun open-dir-in-finder ()
+      "Open a new Finder window to the path of the current buffer"
+      (interactive)
+      (shell-command "open ."))
+    (bind-key "s-/" 'open-dir-in-finder)
+
+    (defun open-dir-in-iterm ()
+      "Open the current directory of the buffer in iTerm."
+      (interactive)
+      (let* ((iterm-app-path "/Applications/iTerm.app")
+             (iterm-brew-path "/opt/homebrew-cask/Caskroom/iterm2/1.0.0/iTerm.app")
+             (iterm-path (if (file-directory-p iterm-app-path)
+                             iterm-app-path
+                           iterm-brew-path)))
+        (shell-command (concat "open -a " iterm-path " ."))))
+    (bind-key "s-=" 'open-dir-in-iterm)
+
+    ;; Not going to use these commands
+    (put 'ns-print-buffer 'disabled t)
+    (put 'suspend-frame 'disabled t)))
+\end{verbatim}
+
+\verb~exec-path-from-shell~ makes the command-line path with Emacs's shell
+match the same one on OS X.
+
+\begin{verbatim}
+(use-package exec-path-from-shell
+  :if (memq window-system '(mac ns))
+  :ensure t
+  :init
+  (exec-path-from-shell-initialize))
+\end{verbatim}
+
+\section{List buffers}
+\label{sec-8}
+
+ibuffer is the improved version of list-buffers.
+
+\begin{verbatim}
+;; make ibuffer the default buffer lister.
+(defalias 'list-buffers 'ibuffer)
+\end{verbatim}
+
+
+source: \url{http://ergoemacs.org/emacs/emacs_buffer_management.html}
+
+\begin{verbatim}
+(add-hook 'dired-mode-hook 'auto-revert-mode)
+
+;; Also auto refresh dired, but be quiet about it
+(setq global-auto-revert-non-file-buffers t)
+(setq auto-revert-verbose nil)
+\end{verbatim}
+
+source: \href{http://whattheemacsd.com/sane-defaults.el-01.html}{Magnars Sveen}
+
+\section{Recentf}
+\label{sec-9}
+
+\begin{verbatim}
+(use-package recentf
+  :commands ido-recentf-open
+  :init
+  (progn
+    (recentf-mode t)
+    (setq recentf-max-saved-items 200)
+
+    (defun ido-recentf-open ()
+      "Use `ido-completing-read' to \\[find-file] a recent file"
+      (interactive)
+      (if (find-file (ido-completing-read "Find recent file: " recentf-list))
+          (message "Opening file...")
+        (message "Aborting")))
+
+    (bind-key "C-x C-r" 'ido-recentf-open)))
+\end{verbatim}
+
+\section{Org mode}
+\label{sec-10}
+
+Truly the way to \href{http://orgmode.org/}{live life in plain text}. I mainly use it to take
+notes and save executable source blocks. I'm also starting to make use
+of its agenda, timestamping, and capturing features.
+
+It goes without saying that I also use it to manage my Emacs config.
+
+\subsection{Org activation bindings}
+\label{sec-10-1}
+
+Set up some global key bindings that integrate with Org Mode features.
+
+\begin{verbatim}
+(bind-key "C-c l" 'org-store-link)
+(bind-key "C-c c" 'org-capture)
+(bind-key "C-c a" 'org-agenda)
+\end{verbatim}
+
+\subsubsection{Org agenda}
+\label{sec-10-1-1}
+
+Learned about \href{https://github.com/sachac/.emacs.d/blob/83d21e473368adb1f63e582a6595450fcd0e787c/Sacha.org#org-agenda}{this \texttt{delq} and \texttt{mapcar} trick from Sacha Chua's config}.
+
+\begin{verbatim}
+(setq org-agenda-files
+      (delq nil
+            (mapcar (lambda (x) (and (file-exists-p x) x))
+                    '("~/Dropbox/Agenda"))))
+\end{verbatim}
+
+\subsubsection{Org capture}
+\label{sec-10-1-2}
+
+\begin{verbatim}
+(bind-key "C-c c" 'org-capture)
+(setq org-default-notes-file "~/Dropbox/Notes/notes.org")
+\end{verbatim}
+
+\subsection{Org setup}
+\label{sec-10-2}
+
+Speed commands are a nice and quick way to perform certain actions
+while at the beginning of a heading. It's not activated by default.
+
+See the doc for speed keys by checking out \href{(info\%20"(org)\%20speed\%20keys")}{the documentation for
+speed keys in Org mode}.
+
+\begin{verbatim}
+(setq org-use-speed-commands t)
+\end{verbatim}
+
+\begin{verbatim}
+(setq org-image-actual-width 550)
+\end{verbatim}
+
+\subsection{Org tags}
+\label{sec-10-3}
+
+The default value is -77, which is weird for smaller width windows.
+I'd rather have the tags align horizontally with the header. 45 is a
+good column number to do that.
+
+\begin{verbatim}
+(setq org-tags-column 45)
+\end{verbatim}
+
+\subsection{Org babel languages}
+\label{sec-10-4}
+
+\begin{verbatim}
+(org-babel-do-load-languages
+ 'org-babel-load-languages
+ '((python . t)
+   (C . t)
+   (calc . t)
+   (latex . t)
+   (java . t)
+   (ruby . t)
+   (lisp . t)
+   (scheme . t)
+   (sh . t)
+   (sqlite . t)
+   (js . t)))
+
+(defun my-org-confirm-babel-evaluate (lang body)
+  "Do not confirm evaluation for these languages."
+  (not (or (string= lang "C")
+           (string= lang "java")
+           (string= lang "python")
+           (string= lang "emacs-lisp")
+           (string= lang "sqlite"))))
+(setq org-confirm-babel-evaluate 'my-org-confirm-babel-evaluate)
+\end{verbatim}
+
+\subsection{Org babel/source blocks}
+\label{sec-10-5}
+
+I like to have source blocks properly syntax highlighted and with the
+editing popup window staying within the same window so all the windows
+don't jump around. Also, having the top and bottom trailing lines in
+the block is a waste of space, so we can remove them.
+
+I noticed that fontification doesn't work with markdown mode when the
+block is indented after editing it in the org src buffer---the leading
+\#s for headers don't get fontified properly because they appear as Org
+comments. Setting \verb~org-src-preserve-indentation~ makes things
+consistent as it doesn't pad source blocks with leading spaces.
+
+\begin{verbatim}
+(setq org-src-fontify-natively t
+      org-src-window-setup 'current-window
+      org-src-strip-leading-and-trailing-blank-lines t
+      org-src-preserve-indentation t
+      org-src-tab-acts-natively t)
+\end{verbatim}
+
+\subsection{Org exporting}
+\label{sec-10-6}
+
+\subsubsection{Pandoc exporter}
+\label{sec-10-6-1}
+
+Pandoc converts between a huge number of different file formats. 
+
+\begin{verbatim}
+(use-package ox-pandoc
+  :ensure t)
+\end{verbatim}
+
+\subsubsection{org-pandoc}
+\label{sec-10-6-2}
+
+\begin{verbatim}
+(use-package org-pandoc :ensure t)
+\end{verbatim}
+
+\subsection{Org bullets}
+\label{sec-10-7}
+
+\begin{verbatim}
+(use-package org-bullets
+ :ensure t
+ :config
+ (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1))))
+\end{verbatim}
+\section{Tramp}
+\label{sec-11}
+
+\begin{verbatim}
+(use-package tramp)
+\end{verbatim}
+
+\section{Locate}
+\label{sec-12}
+
+Using OS X Spotlight within Emacs by modifying the \verb~locate~ function.
+
+I usually use \hyperref[sec-18-9]{\verb~helm-locate~}, which does live updates the spotlight
+search list as you type a query.
+
+\begin{verbatim}
+;; mdfind is the command line interface to Spotlight
+(setq locate-command "mdfind")
+\end{verbatim}
+
+\section{Shell}
+\label{sec-13}
+
+\begin{verbatim}
+(bind-key "C-x m" 'shell)
+(bind-key "C-x M" 'ansi-term)
+\end{verbatim}
+
+\section{Window}
+\label{sec-14}
+
+Convenient keybindings to resize windows.
+
+\begin{verbatim}
+(bind-key "s-C-<left>"  'shrink-window-horizontally)
+(bind-key "s-C-<right>" 'enlarge-window-horizontally)
+(bind-key "s-C-<down>"  'shrink-window)
+(bind-key "s-C-<up>"    'enlarge-window)
+\end{verbatim}
+
+Whenever I split windows, I usually do so and also switch to the other
+window as well, so might as well rebind the splitting key bindings to
+do just that to reduce the repetition.
+
+\begin{verbatim}
+(defun vsplit-other-window ()
+  "Splits the window vertically and switches to that window."
+  (interactive)
+  (split-window-vertically)
+  (other-window 1 nil))
+(defun hsplit-other-window ()
+  "Splits the window horizontally and switches to that window."
+  (interactive)
+  (split-window-horizontally)
+  (other-window 1 nil))
+
+(bind-key "C-x 2" 'vsplit-other-window)
+(bind-key "C-x 3" 'hsplit-other-window)
+\end{verbatim}
+\subsection{windmove}
+\label{sec-14-1}
+
+\begin{verbatim}
+(use-package windmove :ensure t)
+(windmove-default-keybindings)
+(global-set-key (kbd "C-c <left>")  'windmove-left)
+(global-set-key (kbd "C-c <right>") 'windmove-right)
+(global-set-key (kbd "C-c <up>")    'windmove-up)
+(global-set-key (kbd "C-c <down>")  'windmove-down)
+\end{verbatim}
+\subsection{Winner mode}
+\label{sec-14-2}
+
+Winner mode allows you to undo/redo changes to window changes in Emacs
+and allows you.
+
+\begin{verbatim}
+(use-package winner
+  :config
+  (winner-mode t)
+  :bind (("M-s-<left>" . winner-undo)
+         ("M-s-<right>" . winner-redo)))
+\end{verbatim}
+
+\subsection{Transpose frame}
+\label{sec-14-3}
+
+\begin{verbatim}
+(use-package transpose-frame
+  :ensure t
+  :bind ("H-t" . transpose-frame))
+\end{verbatim}
+
+\section{Ido}
+\label{sec-15}
+
+\begin{verbatim}
+(use-package ido
+  :init
+  (setq ido-enable-flex-matching t)
+  (setq ido-everywhere t)
+  (setq ido-use-virtual-buffers t)
+  (ido-mode t)
+  (use-package ido-vertical-mode
+    :ensure t
+    :init (ido-vertical-mode 1)
+    (setq ido-vertical-define-keys 'C-n-and-C-p-only)))
+\end{verbatim}
+
+\section{Whitespace mode}
+\label{sec-16}
+
+\begin{verbatim}
+(use-package whitespace
+  :bind ("s-<f10>" . whitespace-mode))
+\end{verbatim}
+
+\section{Google}
+\label{sec-17}
+\subsection{google}
+\label{sec-17-1}
+
+Emac's interface to the google api
+\begin{verbatim}
+(use-package google :ensure t)
+\end{verbatim}
+
+\subsection{google this}
+\label{sec-17-2}
+
+a set of functions and bindinga to google underpoint
+\begin{verbatim}
+(use-package google-this :ensure t)
+\end{verbatim}
+\section{ELPA packages}
+\label{sec-18}
+
+These are the packages that are not built into Emacs.
+
+\subsection{Ace Jump Mode}
+\label{sec-18-1}
+
+A quick way to jump around text in buffers.
+
+\href{http://emacsrocks.com/e10.html}{See Emacs Rocks Episode 10 for a screencast.}
+
+\begin{verbatim}
+(use-package ace-jump-mode
+  :ensure t
+  :diminish ace-jump-mode
+  :commands ace-jump-mode
+  :bind ("C-S-s" . ace-jump-mode))
+\end{verbatim}
+\subsection{avy}
+\label{sec-18-2}
+
+Replacing ace-window
+
+\begin{verbatim}
+(use-package avy :ensure t)
+(global-set-key (kbd "C-c j") 'avy-goto-word-or-subword-1)
+(global-set-key (kbd "s-.") 'avy-goto-word-or-subword-1)
+(global-set-key (kbd "s-w") 'ace-window)
+\end{verbatim}
+\subsection{Ace Window}
+\label{sec-18-3}
+
+\href{https://github.com/abo-abo/ace-window}{ace-window} is a package that uses the same idea from ace-jump-mode for
+buffer navigation, but applies it to windows. The default keys are
+1-9, but it's faster to access the keys on the home row, so that's
+what I have them set to (with respect to Dvorak, of course).
+
+\begin{verbatim}
+(use-package ace-window
+  :ensure t
+  :config
+  (setq aw-keys '(?a ?o ?e ?u ?h ?t ?n ?s))
+  (ace-window-display-mode)
+  :bind ("s-o" . ace-window))
+\end{verbatim}
+\#+end$_{\text{src}}$
+
+\subsection{Android mode}
+\label{sec-18-4}
+
+\begin{verbatim}
+(use-package android-mode
+  :ensure t)
+\end{verbatim}
+
+\subsection{C-Eldoc}
+\label{sec-18-5}
+
+This package displays function signatures in the mode line.
+
+\begin{verbatim}
+(use-package c-eldoc
+  :commands c-turn-on-eldoc-mode
+  :ensure t
+  :init (add-hook 'c-mode-hook #'c-turn-on-eldoc-mode))
+\end{verbatim}
+
+\subsection{Clojure}
+\label{sec-18-6}
+
+\begin{verbatim}
+(use-package clojure-mode
+  :ensure t)
+\end{verbatim}
+
+\subsection{Dash}
+\label{sec-18-7}
+
+Integration with \href{http://kapeli.com/dash}{Dash, the API documentation browser on OS X}. The
+binding \verb~s-D~ is the same as Cmd-Shift-D, the same binding that dash
+uses in Android Studio (trying to keep things consistent with the
+tools I use).
+
+\begin{verbatim}
+(use-package dash-at-point
+  :ensure t
+  :bind (("s-D"     . dash-at-point)
+         ("C-c e"   . dash-at-point-with-docset)))
+\end{verbatim}
+
+\subsection{Highligh line}
+\label{sec-18-8}
+
+\begin{verbatim}
+(use-package highlight-current-line :ensure t)
+\end{verbatim}
+\subsection{Helm}
+\label{sec-18-9}
+
+\begin{verbatim}
+(use-package helm
+  :ensure t
+  :diminish helm-mode
+  :init (progn
+          (require 'helm-config)
+          (use-package helm-projectile
+            :ensure t
+            :commands helm-projectile
+            :bind ("C-c p h" . helm-projectile))
+          (use-package helm-ag :defer 10  :ensure t)
+          (setq helm-locate-command "mdfind -interpret -name %s %s"
+                helm-ff-newfile-prompt-p nil
+                helm-M-x-fuzzy-match t)
+          (helm-mode)
+          (use-package helm-swoop :ensure t :bind ("M-i" . helm-swoop)))
+  :bind (("C-c h" . helm-command-prefix)
+         ("C-x b" . helm-mini)
+         ("C-`" . helm-resume)
+         ("M-x" . helm-M-x)
+         ("C-x C-f" . helm-find-files)
+         ("M-<tab>" . helm-execute-persistent-action)
+         ("M-y" . helm-show-kill-ring)))
+\end{verbatim}
+
+\subsection{Magit}
+\label{sec-18-10}
+
+A great interface for git projects. It's much more pleasant to use
+than the git interface on the command line. Use an easy keybinding to
+access magit.
+
+\begin{verbatim}
+(use-package magit
+  :ensure t
+  :bind ("C-c g" . magit-status)
+  :config
+  (define-key magit-status-mode-map (kbd "q") 'magit-quit-session))
+\end{verbatim}
+
+\subsubsection{Fullscreen magit}
+\label{sec-18-10-1}
+
+\begin{quote}
+The following code makes magit-status run alone in the frame, and then
+restores the old window configuration when you quit out of magit.
+
+No more juggling windows after commiting. It's magit bliss.
+\end{quote}
+\href{http://whattheemacsd.com/setup-magit.el-01.html}{Source: Magnar Sveen}
+
+\begin{verbatim}
+;; full screen magit-status
+(defadvice magit-status (around magit-fullscreen activate)
+  (window-configuration-to-register :magit-fullscreen)
+  ad-do-it
+  (delete-other-windows))
+
+(defun magit-quit-session ()
+  "Restores the previous window configuration and kills the magit buffer"
+  (interactive)
+  (kill-buffer)
+  (jump-to-register :magit-fullscreen))
+\end{verbatim}
+
+\subsection{Edit With Emacs}
+\label{sec-18-11}
+
+Editing input boxes from Chrome with Emacs. Pretty useful to keep all
+significant text-writing on the web within emacs. I typically use this
+with posts on Discourse, which has a post editor that overrides normal
+Emacs key bindings with other functions. As such, \verb~markdown-mode~ is
+used.
+
+\begin{verbatim}
+(use-package edit-server
+  :ensure t
+  :config
+  (edit-server-start)
+  (setq edit-server-default-major-mode 'markdown-mode)
+  (setq edit-server-new-frame nil))
+\end{verbatim}
+
+\subsection{Elfeed}
+\label{sec-18-12}
+
+\begin{verbatim}
+(use-package elfeed
+  :ensure t
+  :config (setq elfeed-feeds
+                '("http://feeds.feedburner.com/gonintendo/news"
+                  "http://usesthis.com/feed/")))
+\end{verbatim}
+
+\subsection{Emacs IPython Notebook}
+\label{sec-18-13}
+\begin{verbatim}
+(use-package ein
+  :ensure t)
+\end{verbatim}
+
+\subsection{Expand region}
+\label{sec-18-14}
+
+\begin{verbatim}
+(use-package expand-region
+  :ensure t
+  :bind ("C-@" . er/expand-region))
+\end{verbatim}
+
+\subsection{Floobits}
+\label{sec-18-15}
+
+Using \href{https://floobits.com/}{Floobits} for code collaboration.
+
+\begin{verbatim}
+(use-package floobits
+  :ensure t)
+\end{verbatim}
+
+\subsection{Flycheck}
+\label{sec-18-16}
+
+Still need to set up hooks so that flycheck automatically runs in
+python mode, etc. js2-mode is already really good for the syntax
+checks, so I probably don't need the jshint checks with flycheck for
+it.
+
+\begin{verbatim}
+(use-package flycheck
+  :ensure t
+  :defer 10
+  :config (setq flycheck-html-tidy-executable "tidy5"))
+\end{verbatim}
+
+\subsubsection{Linter setups}
+\label{sec-18-16-1}
+
+Install the HTML5/CSS/JavaScript linters.
+
+\begin{verbatim}
+brew tap homebrew/dupes
+brew install tidy
+npm install -g jshint
+npm install -g csslint
+\end{verbatim}
+
+\subsection{Gists}
+\label{sec-18-17}
+
+\begin{verbatim}
+(use-package gist
+  :ensure t
+  :commands gist-list)
+\end{verbatim}
+
+\subsection{Macrostep}
+\label{sec-18-18}
+
+Macrostep allows you to see what Elisp macros expand to. Learned about
+it from the \href{https://www.youtube.com/watch?v\%3D2TSKxxYEbII}{package highlight talk for use-package}.
+
+\begin{verbatim}
+(use-package macrostep
+  :ensure t
+  :bind ("H-`" . macrostep-expand))
+\end{verbatim}
+
+\subsection{Markdown mode}
+\label{sec-18-19}
+
+\begin{verbatim}
+(use-package markdown-mode
+  :ensure t
+  :mode (("\\.markdown\\'" . markdown-mode)
+         ("\\.md\\'"       . markdown-mode))
+         ("\\.jsx\\'" . js2-jsx-mode))
+\end{verbatim}
+
+\subsection{Multiple cursors}
+\label{sec-18-20}
+
+We'll also need to \verb~(require 'multiple-cusors)~ because of \href{https://github.com/magnars/multiple-cursors.el/issues/105}{an autoload issue}.
+
+\begin{verbatim}
+(use-package multiple-cursors
+  :ensure t
+  :bind (("C-S-c C-S-c" . mc/edit-lines)
+         ("C->"         . mc/mark-next-like-this)
+         ("C-<"         . mc/mark-previous-like-this)
+         ("C-c C-<"     . mc/mark-all-like-this)
+         ("C-!"         . mc/mark-next-symbol-like-this)
+         ("s-d"         . mc/mark-all-dwim)))
+\end{verbatim}
+
+\subsection{Olivetti}
+\label{sec-18-21}
+
+\begin{verbatim}
+(use-package olivetti
+  :ensure t
+  :bind ("s-<f6>" . olivetti-mode))
+\end{verbatim}
+
+\subsection{Perspective}
+\label{sec-18-22}
+
+Workspaces in Emacs.
+
+\begin{verbatim}
+(use-package perspective
+  :ensure t
+  :config (persp-mode))
+\end{verbatim}
+
+\subsection{Projectile}
+\label{sec-18-23}
+
+\begin{quote}
+Project navigation and management library for Emacs.
+\end{quote}
+\url{http://batsov.com/projectile/}
+
+
+\begin{verbatim}
+(use-package projectile
+  :ensure t
+  :diminish projectile-mode
+  :commands projectile-mode
+  :config
+  (progn
+    (projectile-global-mode t)
+    (setq projectile-enable-caching t)
+    (use-package ag
+      :commands ag
+      :ensure t)))
+\end{verbatim}
+
+\subsection{Python}
+\label{sec-18-24}
+
+Integrates with IPython.
+
+\begin{verbatim}
+(use-package python-mode
+  :ensure t)
+\end{verbatim}
+
+\subsection{Racket}
+\label{sec-18-25}
+
+Starting to use Racket now, mainly for programming paradigms class,
+though I'm looking forward to some "REPL-driven development" whenever
+I get the chance.
+
+\begin{verbatim}
+(use-package racket-mode
+  :ensure t
+  :commands racket-mode
+  :config
+  (setq racket-smart-open-bracket-enable t))
+
+(use-package geiser
+  :ensure t
+  :config
+  (setq geiser-default-implementation '(racket)))
+\end{verbatim}
+
+\subsection{Restclient}
+\label{sec-18-26}
+
+See \href{http://emacsrocks.com/e15.html}{Emacs Rocks! Episode 15} to learn how restclient can help out with
+testing APIs from within Emacs. The HTTP calls you make in the buffer
+aren't constrainted within Emacs; there's the
+\texttt{restclient-copy-curl-command} to get the equivalent \texttt{curl} call
+string to keep things portable.
+
+\begin{verbatim}
+(use-package restclient
+  :ensure t
+  :mode ("\\.restclient\\'" . restclient-mode))
+\end{verbatim}
+
+\subsection{Smartparens mode}
+\label{sec-18-27}
+
+\begin{verbatim}
+(use-package smartparens
+  :ensure t
+  :diminish smartparens-mode
+  :config
+  (add-to-list 'sp--lisp-modes 'racket-mode)
+  (add-to-list 'sp--lisp-modes 'geiser-mode)
+  (require 'smartparens-config)
+  (smartparens-global-mode t))
+\end{verbatim}
+
+\subsection{Smartparens org mode}
+\label{sec-18-28}
+
+Set up some pairings for org mode markup. These pairings won't
+activate by default; they'll only apply for wrapping regions.
+
+\begin{verbatim}
+(sp-local-pair 'org-mode "~" "~" :actions '(wrap))
+(sp-local-pair 'org-mode "/" "/" :actions '(wrap))
+(sp-local-pair 'org-mode "*" "*" :actions '(wrap))
+(add-hook 'js-mode-hook #'smartparens-mode)
+\end{verbatim}
+
+\subsection{Smartscan}
+\label{sec-18-29}
+
+\begin{quote}
+Quickly jumps between other symbols found at point in Emacs.
+\end{quote}
+\url{http://www.masteringemacs.org/article/smart-scan-jump-symbols-buffer}
+
+
+\begin{verbatim}
+(use-package smartscan
+  :ensure t
+  :config (global-smartscan-mode 1)
+  :bind (("s-n" . smartscan-symbol-go-forward)
+         ("s-p" . smartscan-symbol-go-backward)))
+\end{verbatim}
+
+\subsection{Smex}
+\label{sec-18-30}
+
+Smex integrates ido with \verb~M-x~. I used to use this before moving on to
+\hyperref[sec-18-9]{helm}.
+
+\begin{verbatim}
+(use-package smex
+  :if (not (featurep 'helm-mode))
+  :ensure t
+  :bind ("M-x" . smex))
+(setq smex-save-file (expand-file-name ".smex-items" user-emacs-directory))
+\end{verbatim}
+\subsection{Aggressive indent}
+\label{sec-18-31}
+
+\begin{verbatim}
+(use-package aggressive-indent
+    :ensure t)
+(global-aggressive-indent-mode 1)
+\end{verbatim}
+\subsection{Skewer mode}
+\label{sec-18-32}
+
+Live coding for HTML/CSS/JavaScript.
+
+\begin{verbatim}
+(use-package skewer-mode
+  :commands skewer-mode
+  :ensure t
+  :config (skewer-setup))
+\end{verbatim}
+
+\subsection{Smoothscrolling}
+\label{sec-18-33}
+
+This makes it so \verb~C-n~-ing and \verb~C-p~-ing won't make the buffer jump
+around so much.
+
+\begin{verbatim}
+(use-package smooth-scrolling
+  :ensure t)
+\end{verbatim}
+
+\subsection{Typescript mode}
+\label{sec-18-34}
+
+\begin{verbatim}
+(use-package typescript-mode
+  :ensure t)
+\end{verbatim}
+
+\subsection{Visual-regexp}
+\label{sec-18-35}
+
+\begin{verbatim}
+(use-package visual-regexp
+  :ensure t
+  :init
+  (use-package visual-regexp-steroids :ensure t)
+  :bind (("C-c r" . vr/replace)
+         ("C-c q" . vr/query-replace)
+         ("C-c m" . vr/mc-mark) ; Need multiple cursors
+         ("C-M-r" . vr/isearch-backward)
+         ("C-M-s" . vr/isearch-forward)))
+\end{verbatim}
+
+\subsection{Webmode}
+\label{sec-18-36}
+
+\begin{verbatim}
+(use-package web-mode
+  :ensure t
+  :mode (("\\.js\\'" . web-mode)
+         ("\\.js\\'"       . js2-jsx-mode)
+         ("\\.html\\'" . web-mode)
+         ("\\.html\\.erb\\'" . web-mode)
+         ("\\.mustache\\'" . web-mode)
+         ("\\.jinja\\'" . web-mode)
+         ("\\.php\\'" . web-mode))
+  :config
+  (progn
+    (setq web-mode-engines-alist
+          '(("\\.jinja\\'"  . "django")))))
+\end{verbatim}
+
+\subsection{Yasnippet}
+\label{sec-18-37}
+
+Yeah, snippets! I start with snippets from \href{https://github.com/AndreaCrotti/yasnippet-snippets}{Andrea Crotti's collection}
+and have also modified them and added my own.
+
+It takes a few seconds to load and I don't need them immediately when
+Emacs starts up, so we can defer loading yasnippet until there's some
+idle time.
+
+\begin{verbatim}
+(use-package yasnippet
+  :ensure t
+  :defer 10
+  :diminish yas-minor-mode
+  :config
+  (setq yas-snippet-dirs (concat user-emacs-directory "snippets"))
+  (yas-global-mode))
+\end{verbatim}
+
+\subsection{Emmet}
+\label{sec-18-38}
+
+According to \href{http://emmet.io/}{their website}, "Emmet — the essential toolkit for web-developers."
+
+\begin{verbatim}
+(use-package emmet-mode
+  :ensure t
+  :commands emmet-mode
+  :config
+  (add-hook 'html-mode-hook 'emmet-mode)
+  (add-hook 'css-mode-hook 'emmet-mode))
+\end{verbatim}
+
+\subsection{Zoom-frm}
+\label{sec-18-39}
+
+\texttt{zoom-frm} is a nice package that allows you to resize the text of
+entire Emacs frames (this includes text in the buffer, mode line, and
+minibuffer). The \texttt{zoom-in/out} command acts similar to the
+\texttt{text-scale-adjust} command---you can chain zooming in, out, or
+resetting to the default size once the command has been initially
+called.
+
+Changing the \texttt{frame-zoom-font-difference} essentially enables a
+"presentation mode" when calling \texttt{toggle-zoom-frame}.
+
+\begin{verbatim}
+(use-package zoom-frm
+  :ensure t
+  :bind (("C-M-=" . zoom-in/out)
+         ("H-z"   . toggle-zoom-frame))
+  :config
+  (setq frame-zoom-font-difference 10))
+\end{verbatim}
+
+\subsection{Scratch}
+\label{sec-18-40}
+
+Convenient package to create \texttt{*scratch*} buffers that are based on the
+current buffer's major mode. This is more convienent than manually
+creating a buffer to do some scratch work or reusing the initial
+\texttt{*scratch*} buffer.
+
+\begin{verbatim}
+(use-package scratch
+  :ensure t)
+\end{verbatim}
+
+\subsection{Shell pop}
+\label{sec-18-41}
+
+\begin{verbatim}
+(use-package shell-pop
+  :ensure t
+  :bind ("M-<f12>" . shell-pop))
+\end{verbatim}
+
+\subsection{SLIME}
+\label{sec-18-42}
+
+The Superior Lisp Interaction Mode for Emacs. First, Install SBCL with
+brew.
+
+\begin{verbatim}
+brew install sbcl
+\end{verbatim}
+
+\begin{verbatim}
+(use-package slime
+  :ensure t
+  :init
+  (setq inferior-lisp-program "/usr/local/bin/sbcl")
+  (add-to-list 'slime-contribs 'slime-fancy))
+\end{verbatim}
+
+\subsection{Quickrun}
+\label{sec-18-43}
+
+\begin{verbatim}
+(use-package quickrun
+  :defer 10
+  :ensure t
+  :bind ("H-q" . quickrun))
+\end{verbatim}
+
+\subsection{Visible mode}
+\label{sec-18-44}
+
+I found out about this mode my looking through simple.el. I use it to
+see raw org-mode files without going to a different mode like
+text-mode, which is what I had done in order to see invisible text
+(with org hyperlinks). The entire buffer contents will be visible
+while still being in org mode.
+
+\begin{verbatim}
+(use-package visible-mode
+  :bind ("H-v" . visible-mode))
+\end{verbatim}
+
+\subsection{Virtualenvwrapper}
+\label{sec-18-45}
+
+\begin{verbatim}
+(use-package virtualenvwrapper
+  :ensure t
+  :config
+  (setq venv-location "~/.virtualenvs"))
+\end{verbatim}
+\subsection{XQuery mode}
+\label{sec-18-46}
+
+\begin{verbatim}
+(use-package xquery-mode
+  :ensure t)
+\end{verbatim}
+\subsection{\LaTeX{} Extra}
+\label{sec-18-47}
+
+\begin{verbatim}
+(use-package latex-extra
+  :ensure t)
+\end{verbatim}
+
+\subsection{\LaTeX{} Preview Mode}
+\label{sec-18-48}
+
+\begin{verbatim}
+(use-package latex-preview-pane
+  :ensure t)
+\end{verbatim}
+
+\subsection{Undo Tree}
+\label{sec-18-49}
+
+\begin{verbatim}
+(use-package undo-tree
+  :ensure t)
+\end{verbatim}
+
+\section{Computer-specific settings}
+\label{sec-19}
+\section{Languages}
+\label{sec-20}
+\subsection{C/Java}
+\label{sec-20-1}
+
+I don't like the default way that Emacs handles indentation. For instance,
+
+\begin{verbatim}
+int main(int argc, char *argv[])
+{
+  /* What's with the brace alignment? */
+  if (check)
+    {
+    }
+  return 0;
+}
+\end{verbatim}
+
+\begin{verbatim}
+switch (number)
+    {
+    case 1:
+        doStuff();
+        break;
+    case 2:
+        doStuff();
+        break;
+    default:
+        break;
+    }
+\end{verbatim}
+
+Luckily, I can modify the way Emacs formats code with this configuration.
+
+\begin{verbatim}
+(defun my-c-mode-hook ()
+  (setq c-basic-offset 4)
+  (c-set-offset 'substatement-open 0)   ; Curly braces alignment
+  (c-set-offset 'case-label 4))         ; Switch case statements alignment
+
+(add-hook 'c-mode-hook 'my-c-mode-hook)
+(add-hook 'java-mode-hook 'my-c-mode-hook)
+\end{verbatim}
+
+\subsection{Jasmin}
+\label{sec-20-2}
+Mode for editing Jasmin Java bytecode assembler files.
+
+\begin{verbatim}
+(use-package jasmin)
+\end{verbatim}
+
+\subsection{Rust}
+\label{sec-20-3}
+
+\#+BEGIN$_{\text{SRC}}$ emacs-lisp
+(use-package rust-mode
+:ensure t)
+
+\subsection{Wed Dev}
+\label{sec-20-4}
+\subsubsection{Angular}
+\label{sec-20-4-1}
+
+\begin{verbatim}
+(use-package angular-mode :ensure t)
+\end{verbatim}
+
+\subsubsection{company mode}
+\label{sec-20-4-2}
+
+\begin{verbatim}
+(use-package company
+     :ensure t)
+(add-hook 'after-init-hook 'global-company-mode)
+\end{verbatim}
+\subsubsection{company-web}
+\label{sec-20-4-3}
+
+\begin{verbatim}
+(use-package company-web :ensure t)
+\end{verbatim}
+\subsubsection{auto-pair}
+\label{sec-20-4-4}
+
+\begin{verbatim}
+(use-package autopair :ensure t)
+;;;(autopair-global-mode 1)
+\end{verbatim}
+\subsubsection{Ac's}
+\label{sec-20-4-5}
+\begin{enumerate}
+\item ac-html
+\label{sec-20-4-5-1}
+
+\begin{verbatim}
+(use-package ac-html :ensure t)
+\end{verbatim}
+\item ac-html-angular
+\label{sec-20-4-5-2}
+\begin{verbatim}
+(use-package ac-html-angular :ensure t)
+\end{verbatim}
+\item ac-html-csswatcher
+\label{sec-20-4-5-3}
+
+\begin{verbatim}
+(use-package ac-html-csswatcher :ensure t)
+\end{verbatim}
+\end{enumerate}
+
+\section{Misc}
+\label{sec-21}
+\subsection{Display Time}
+\label{sec-21-1}
+
+When displaying the time with \texttt{display-time-mode}, I don't care about
+the load average.
+
+\begin{verbatim}
+(setq display-time-default-load-average nil)
+\end{verbatim}
+
+\subsection{Display Battery Mode}
+\label{sec-21-2}
+
+See the documentation for \texttt{battery-mode-line-format} for the format
+characters.
+
+\begin{verbatim}
+(setq battery-mode-line-format "[%b%p%% %t]")
+\end{verbatim}
+
+\subsection{Docview keybindings}
+\label{sec-21-3}
+
+Convenience bindings to use doc-view with the arrow keys.
+
+\begin{verbatim}
+(use-package doc-view
+  :commands doc-view-mode
+  :config
+  (define-key doc-view-mode-map (kbd "<right>") 'doc-view-next-page)
+  (define-key doc-view-mode-map (kbd "<left>") 'doc-view-previous-page))
+\end{verbatim}
+
+\subsection{OS X scrolling}
+\label{sec-21-4}
+
+\begin{verbatim}
+(setq mouse-wheel-scroll-amount (quote (0.01)))
+\end{verbatim}
+
+\subsection{Emacsclient}
+\label{sec-21-5}
+
+\begin{verbatim}
+(use-package server
+  :config
+  (server-start))
+\end{verbatim}
+
+\begin{verbatim}
+(use-package visible-mode
+  :bind ("H-v" . visible-mode))
+\end{verbatim}
+\subsection{Cl-library}
+\label{sec-21-6}
+
+\begin{verbatim}
+(use-package cl-lib :ensure t)
+\end{verbatim}
+% Emacs 25.0.91.1 (Org mode 8.2.10)
+\end{document}

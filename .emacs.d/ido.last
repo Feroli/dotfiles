@@ -1,0 +1,349 @@
+;;; -*- coding: utf-8 -*-
+
+;; ----- ido-last-directory-list -----
+(
+ ("/Users/Feroli/sites/twitter-clone/db/" . "migrate/")
+ ("/Users/Feroli/dotFile/" . "dotfiles/")
+ ("/Users/Feroli/sites/twitter-clone/app/views/" . "profile/")
+ ("/Users/Feroli/sites/twitter-clone/app/assets/frontend/" . "components/")
+ ("/Users/Feroli/sites/twitter-clone/app/assets/" . "frontend/")
+ ("/Users/Feroli/sites/twitter-clone/app/" . "controllers/")
+ ("/Users/Feroli/sites/twitter-clone/" . "db/")
+ ("/Users/Feroli/sites/angulaFundamentals/4-angularjs-fundamentals-m4-routing-exercise-files/Finished/02-MoreRouting/" . "AppData/")
+ ("/Users/Feroli/sites/angularFunMine/app/pages/" . "EventList.html/")
+ ("/Users/Feroli/sites/angularFunMine/app/js/" . "controllers/")
+ ("/Users/Feroli/sites/angularFunMine/app/" . "js/")
+ ("/Users/Feroli/Downloads/cw/src/com/" . "company/")
+ ("/Users/Feroli/Downloads/cw/src/" . "com/")
+ ("/Users/Feroli/Downloads/cw/" . "src/")
+ ("/Users/Feroli/Downloads/" . "OSCWeek4/")
+ ("/Users/Feroli/.emacs.d/elpa/" . "darcula-theme-20160106.1352/")
+ ("/Users/Feroli/sites/angularFunMine/" . "app/")
+ ("/Users/Feroli/.bash/" . "git-aware-prompt/")
+ ("/Users/Feroli/sites/angulaFundamentals/3-angularjs-fundamentals-m3-services-exercise-files/Finished/09-AnchorScrollService/" . "app/")
+ ("/Users/Feroli/sites/angulaFundamentals/3-angularjs-fundamentals-m3-services-exercise-files/Finished/" . "09-AnchorScrollService/")
+ ("/Users/Feroli/sites/angulaFundamentals/3-angularjs-fundamentals-m3-services-exercise-files/" . "Finished/")
+ ("/Users/Feroli/sites/angulaFundamentals/" . "3-angularjs-fundamentals-m3-services-exercise-files/")
+ ("/Users/Feroli/notes/kcl/" . "osc/")
+ ("/Users/Feroli/sites/angularMaterialForecastBootstrap/" . "pages/")
+ ("/Users/Feroli/bin/dotfiles/" . "zsh/")
+ ("/Users/Feroli/bin/" . "dotfiles/")
+ ("/Users/Feroli/Pokemon-Showdown/config/" . "avatars/")
+ ("/Users/Feroli/Pokemon-Showdown/" . "config/")
+ ("/Users/Feroli/AndroidStudioProjects/Threads/src/" . "QuickThread/")
+ ("/Users/Feroli/AndroidStudioProjects/Threads/" . "src/")
+ ("/Users/Feroli/AndroidStudioProjects/" . "Threads/")
+ ("/Users/Feroli/notes/" . "kcl/")
+ ("/Users/Feroli/.atom/packages/linter-eslint/" . "lib/")
+ ("/Users/Feroli/.atom/packages/" . "linter-eslint/")
+ ("/Users/Feroli/.atom/" . "packages/")
+ ("/Users/Feroli/sites/Multivision/server/views/" . "partials/")
+ ("/Users/Feroli/sites/Multivision/server/" . "views/")
+ ("/Users/Feroli/sites/Multivision/" . "server/")
+ ("/Users/Feroli/git_exercise/IntegerCalculatot/app/src/main/java/com/example/feroli/" . "integercalculatot/")
+ ("/Users/Feroli/git_exercise/IntegerCalculatot/app/src/main/java/com/example/" . "feroli/")
+ ("/Users/Feroli/git_exercise/IntegerCalculatot/app/src/main/java/com/" . "example/")
+ ("/Users/Feroli/git_exercise/IntegerCalculatot/app/src/main/java/" . "com/")
+ ("/Users/Feroli/git_exercise/IntegerCalculatot/app/src/main/" . "java/")
+ ("/Users/Feroli/git_exercise/IntegerCalculatot/app/src/" . "main/")
+ ("/Users/Feroli/git_exercise/IntegerCalculatot/app/" . "src/")
+ ("/Users/Feroli/git_exercise/IntegerCalculatot/" . "app/")
+ ("/Users/Feroli/git_exercise/" . "IntegerCalculatot/")
+ ("/Users/Feroli/infiJava/Collection/" . "associativeCollection/")
+ ("/Users/Feroli/kcl/" . "gitexercise/")
+ ("/etc/" . "mysql/")
+ ("/Library/Java/JavaVirtualMachines/jdk1.8.0_45.jdk/Contents/Home/" . "lib/")
+ ("/Library/Java/JavaVirtualMachines/jdk1.8.0_45.jdk/Contents/" . "Home/")
+ ("/Library/Java/JavaVirtualMachines/jdk1.8.0_45.jdk/" . "Contents/")
+ ("/Library/Java/JavaVirtualMachines/" . "jdk1.8.0_45.jdk/")
+ ("/Library/Java/" . "JavaVirtualMachines/")
+ ("/Library/" . "Java/")
+ ("/Users/Feroli/courses/InfiniteSkills.Advanced.Java.Programming/Working_Files/Working Files/" . "Chapter 06/")
+ ("/Users/Feroli/courses/InfiniteSkills.Advanced.Java.Programming/Working_Files/" . "Working Files/")
+ ("/Users/Feroli/courses/InfiniteSkills.Advanced.Java.Programming/" . "Working_Files/")
+ ("/Users/Feroli/Dev/" . "Ultimate Ninja Storm Revolution/")
+ ("/Users/Feroli/infiJava/" . "Collection/")
+ ("/Users/Feroli/sites/Amalias Ragdolls/" . "css/")
+ ("/Users/Feroli/sites/" . "twitter-clone/")
+ ("/Users/Feroli/courses/Projects in Java/" . "Section 5 Use Database in Java/")
+ ("/Users/Feroli/courses/" . "InfiniteSkills.Advanced.Java.Programming/")
+ ("/Users/Feroli/.emacs.d/plugins/" . "yasnippet/")
+ ("/Users/Feroli/.emacs.d/" . "elpa/")
+ ("/Users/" . "Feroli/")
+ ("/" . "Users/")
+ ("/Users/Feroli/" . ".emacs.d/")
+)
+
+;; ----- ido-work-directory-list -----
+(
+ "/Users/Feroli/.emacs.d/"
+ "/Users/Feroli/notes/kcl/Year2/PDL/"
+ "/Users/Feroli/sites/twitter-clone/"
+ "/Users/Feroli/sites/twitter-clone/app/"
+ "/Users/Feroli/sites/twitter-clone/db/migrate/"
+ "/Users/Feroli/sites/twitter-clone/config/"
+ "/Users/Feroli/sites/twitter-clone/app/controllers/"
+ "/Users/Feroli/sites/twitter-clone/app/views/profile/"
+ "/Users/Feroli/sites/twitter-clone/db/"
+ "/Users/Feroli/sites/twitter-clone/app/helpers/"
+ "/Users/Feroli/sites/twitter-clone/app/assets/frontend/components/"
+ "/Users/Feroli/sites/twitter-clone/app/views/layouts/"
+ "/Users/Feroli/sites/twitter-clone/app/assets/stylesheets/"
+ "/Users/Feroli/sites/twitter-clone/app/assets/frontend/"
+ "/Users/Feroli/pandoc-test/"
+ "/Users/Feroli/dotFile/dotfiles/"
+ "/Users/Feroli/dotFile/"
+ "/Users/Feroli/sites/twitter-clone/app/assets/javascripts/"
+ "/Users/Feroli/"
+ "/Users/Feroli/emacsConfig/"
+ "/Users/Feroli/sites/angularFunMine/app/js/"
+ "/Users/Feroli/sites/angularFunMine/app/pages/"
+ "/Users/Feroli/infiJava/Collection/associativeCollection/"
+ "/Users/Feroli/sites/angularFunMine/app/js/controllers/"
+ "/Users/Feroli/sites/angularFunMine/app/"
+ "/Users/Feroli/sites/angularFunMine/app/css/"
+ "/Users/Feroli/sites/twitter-clone/app/views/home/"
+ "/Users/Feroli/bin/dotfiles/zsh/"
+ "/Users/Feroli/bin/dotfiles/bash/"
+ "/Users/Feroli/sites/"
+ "/Users/Feroli/Downloads/OSCWeek4/"
+ "/Users/Feroli/notes/kcl/osc/"
+ "/Users/Feroli/sites/angularFunMine/"
+ "/Users/Feroli/notes/persona/"
+ "/Users/Feroli/sites/angularFunMine/app/partials/"
+ "/Users/Feroli/sites/angularFunMine/scripts/"
+ "/Users/Feroli/sites/angularFunMine/app/js/services/"
+ "/Users/Feroli/sites/angularFunMine/app/js/filters/"
+ "/Users/Feroli/Downloads/cw/src/com/company/"
+ "/Users/Feroli/.emacs.d/elpa/darcula-theme-20160106.1352/"
+ "/Users/Feroli/notes/javascript/"
+ "/Users/Feroli/.bash/git-aware-prompt/"
+ "/Users/Feroli/notes/"
+ "/Users/Feroli/notes/projectRun/"
+ "/Users/Feroli/sites/angulaFundamentals/3-angularjs-fundamentals-m3-services-exercise-files/Finished/09-AnchorScrollService/app/"
+ "/Users/Feroli/notes/kcl/osd/"
+ "/Users/Feroli/notes/org/"
+ "/Users/Feroli/notes/kcl/fc2/"
+ "/Users/Feroli/sites/angularMaterialForecastBootstrap/"
+ "/Users/Feroli/sites/angularMaterialForecastBootstrap/pages/"
+)
+
+;; ----- ido-work-file-list -----
+(
+ "config.org"
+ "config.el"
+ "20160223105652_add_name_to_users.rb"
+ "routes.rb"
+ "profile_controller.rb"
+ "index.html.erb"
+ "home_controller.rb"
+ "schema.rb"
+ "Gemfile"
+ "config.ru"
+)
+
+;; ----- ido-dir-file-cache -----
+(
+ ("/Users/Feroli/sites/twitter-clone/" (22237 54067 0 0) "webpack.config.js" "vendor/" "tmp/" "test/" "README.rdoc" "Rakefile" "public/" "package.json" "node_modules/" "log/" "lib/" "Gemfile.lock" "Gemfile" "db/" "config.ru" "config/" "bin/" "app/" ".projectile" ".gitignore" ".git/" ".eslintrc" ".DS_Store" "../" "./")
+
+ ("/Users/Feroli/notes/kcl/Year2/PDL/" (22237 31574 0 0) "w_7_8-SFUN.org" "w_7_8-SFUN.html" "w9-10_Logic-Programming-Languages.org" "w6-7_functional-language.org" "w6-7_functional-language.html" "w5_Structural-Operational-Semantics.org" "w5_Structural-Operational-Semantics.html" "w4_induction.org" "w4_induction.html" "w3_SIMP-and-Abstract-Machine.org" "w2_imperative-language.org" "w1_intro.org" "w1_intro.html" "tut.org" "theme-readtheorg.setup" "theme-bigblow.setup" "rule.png" "induction.png" "images/" "haskell.org" "haskell.html" "axiomProof.png" "../" "./")
+
+ ("/Users/Feroli/.emacs.d/" (22239 30079 0 0) "request/" "recentf" "projectile.cache" "projectile-bookmarks.eld" "network-security.data" "init.el" "ido.last" "elpa/" "custom.el" "config.org" "config.el" "bookmarks" "auto-save-list/" ".smex-items" ".projectile" ".mc-lists.el" "../" "./")
+
+ ("/Users/Feroli/" (22239 30090 0 0) "yackCrawl/" "winetricks" "wifi" "webapp/" "web hosting/" "todo.org~" "test.html" "test/" "temp/" "tax office.pdf" "studentFinance.text~" "studentFinance.text" "student finance/" "src/" "spacemacs-logo/" "spacemacs/" "sites/" "shellScripts/" "Public/" "prolog/" "projrunw/" "Pictures/" "pbcopy" "pandoc_resume/" "pandoc-test/" "oldEmacs" "notes/" "Music/" "Movies/" "macports/" "Library/" "kcl/" "IdeaProjects/" "Haskell/" "github/" "emacsConfig/" "Dropbox/" "Downloads/" "dotFile/" "Documents/" "Desktop/" "components/" "black-screen/" "bin/" "Applications/" ".zshrc" ".zsh_history" ".zsh-update" ".zlogin" ".zcompdump-Fernando’s MacBook Pro-5.2" ".zcompdump-Fernando’s MacBook Pro-5.0.5" ".zcompdump" ".Xauthority" ".wget-hsts" ".viminfo" ".v8flags.4.6.85.31.Feroli.json" ".Trash/" ".swipl-dir-history/" ".subversion/" ".ssh/" ".saves/" ".rvm/" ".rnd" ".psql_history" ".pry_history" ".profile" ".oracle_jre_usage/" ".oh-my-zsh/" ".npm/" ".node-gyp/" ".mkshrc" ".local/" ".ispell_english" ".gitconfig" ".ghc/" ".gem/" ".emacs.d/" ".electron/" ".DS_Store" ".dropbox/" ".config/" ".cache/" ".cabal/" ".black-screen-state" ".bashrc" ".bash_profile" ".babel.json" ".atom/" ".aspell.en.pws" ".aspell.en.prepl" ".archey-ip" ".android/" "../" "./")
+
+ ("/Users/Feroli/notes/" (22229 22923 0 0) "permission.org" "kcl/" "../" "./")
+
+ ("/Users/Feroli/sites/" (22221 42156 0 0) "weatherForecast/" "twitter-clone/" "StartRails/" "Ruby/" "reactjs-on-rails-building-full-stack-web-app 2/" "nodeTuts/" "myWeatherForecast/" "Multivision/" "meanjs/" "github/" ".DS_Store" "../" "./")
+
+ ("/Users/Feroli/bin/dotfiles/zsh/" (22230 50060 0 0) "init" "env" "config" "aliases" ".projectile" ".DS_Store" "../" "./")
+
+ ("/Users/Feroli/sites/twitter-clone/app/assets/javascripts/" (22224 11496 0 0) "tweets.coffee" "profile.coffee" "bundle.js.map" "bundle.js" "application.js" "../" "./")
+
+ ("/Users/Feroli/dotFile/dotfiles/" (22221 40597 0 0) "zshrc" "zsh-syntax-highlighting/" "zsh/" "wifi.py" "vcprompt-install" "vcprompt" "ssh/" "spacemacs/" "README.org" "newtab" "loaddb" "install-key" "imgcat" "gmate" "gitup" "git-remote-branch" "git-notpushed" "git-aware-prompt/" "fonts/" "fixSafari4" "dumpschema" "dumpdb" "beautify" "bashrc" "bash/" ".git/" ".emacs.d/" ".DS_Store" "../" "./")
+
+ ("/Users/Feroli/pandoc-test/" (22222 20802 0 0) "template.html" "template.css" "scratch.html" "out.html" "config1.html" "config.org" "config.md" "config.epub" "bower_components/" "bootstrap/" "../" "./")
+
+ ("/Users/Feroli/sites/twitter-clone/app/assets/stylesheets/" (22224 11496 0 0) "tweets.scss" "profile.scss" "home.scss" "application.css" "../" "./")
+
+ ("/Users/Feroli/sites/twitter-clone/app/views/layouts/" (22224 55887 0 0) "application.html.erb" "../" "./")
+
+ ("/Users/Feroli/sites/twitter-clone/app/assets/frontend/components/" (22225 38862 0 0) "TweetsList.jsx" "TweetBox.jsx" "Tweet.jsx" "#TweetBox.jsx#" "../" "./")
+
+ ("/Users/Feroli/sites/twitter-clone/app/helpers/" (22224 11496 0 0) "tweets_helper.rb" "profile_helper.rb" "application_helper.rb" "../" "./")
+
+ ("/Users/Feroli/sites/twitter-clone/app/controllers/" (22224 34576 0 0) "tweets_controller.rb" "profile_controller.rb" "home_controller.rb" "concerns/" "application_controller.rb" "../" "./")
+
+ ("/Users/Feroli/sites/twitter-clone/db/migrate/" (22224 11622 0 0) "20160226104600_create_tweets.rb" "20160223105652_add_name_to_users.rb" "20160221152029_devise_create_users.rb" "../" "./")
+
+ ("/usr/local/Cellar/emacs/25.0.91/share/info/emacs/" (22216 48528 0 0) "woman.info.gz" "wisent.info.gz" "widget.info.gz" "viper.info.gz" "vip.info.gz" "vhdl-mode.info.gz" "url.info.gz" "tramp.info.gz" "todo-mode.info.gz" "srecode.info.gz" "speedbar.info.gz" "smtpmail.info.gz" "sieve.info.gz" "ses.info.gz" "semantic.info.gz" "sc.info.gz" "sasl.info.gz" "remember.info.gz" "reftex.info.gz" "rcirc.info.gz" "pgg.info.gz" "pcl-cvs.info.gz" "org.info.gz" "octave-mode.info.gz" "nxml-mode.info.gz" "newsticker.info.gz" "mh-e.info.gz" "message.info.gz" "mairix-el.info.gz" "info.info.gz" "ido.info.gz" "idlwave.info.gz" "htmlfontify.info.gz" "gnus.info.gz" "forms.info.gz" "flymake.info.gz" "eww.info.gz" "eudc.info.gz" "eshell.info.gz" "ert.info.gz" "erc.info.gz" "epa.info.gz" "emacs.info.gz" "emacs-mime.info.gz" "emacs-gnutls.info.gz" "elisp.info.gz" "eintr.info.gz" "eieio.info.gz" "efaq.info.gz" "edt.info.gz" "ediff.info.gz" "ede.info.gz" "ebrowse.info.gz" "dired-x.info.gz" "dir" "dbus.info.gz" "cl.info.gz" "ccmode.info.gz" "calc.info.gz" "bovine.info.gz" "autotype.info.gz" "auth.info.gz" "ada-mode.info.gz" "../" "./")
+
+ ("/Users/Feroli/Haskell/" (22227 32977 0 0) "TAGS" "hello.hs" ".#hello.hs" "../" "./")
+
+ ("/Users/Feroli/sites/twitter-clone/app/assets/frontend/" (22225 27445 0 0) "main.jsx" "components/" "../" "./")
+
+ ("/Users/Feroli/github/projrunw/" (22224 48237 0 0) "webpack.config.js" "vendor/" "tourNotes.org" "tmp/" "spec/" "README.md" "Rakefile" "public/" "package.json" "node_modules/" "log/" "LICENSE" "lib/" "Gemfile.lock" "Gemfile" "db/" "config.ru" "config/" "bin/" "app/" ".rspec" ".gitignore" ".git/" ".eslintrc" ".DS_Store" ".buildpacks" "../" "./")
+
+ ("/Users/Feroli/sites/twitter-clone/app/views/profile/" (22220 21955 0 0) "index.html.erb" "../" "./")
+
+ ("/Users/Feroli/sites/twitter-clone/config/" (22220 20817 0 0) "secrets.yml" "routes.rb" "locales/" "initializers/" "environments/" "environment.rb" "database.yml" "boot.rb" "application.rb" ".DS_Store" "../" "./")
+
+ ("/Users/Feroli/sites/twitter-clone/db/" (22217 54717 0 0) "seeds.rb" "schema.rb" "migrate/" "../" "./")
+
+ ("/Users/Feroli/sites/twitter-clone/app/views/" (22219 24887 0 0) "profile/" "layouts/" "home/" "../" "./")
+
+ ("/Users/Feroli/dotFile/" (22219 3658 0 0) "dotfiles/" ".bashrc" ".bash_profile" "../" "./")
+
+ ("/Users/Feroli/bin/" (22218 8211 0 0) "dotfiles/" ".DS_Store" ".bashrc" ".bash_profile" "../" "./")
+
+ ("/Users/Feroli/bin/dotfiles/" (22218 14751 0 0) "zshrc" "zsh-syntax-highlighting/" "zsh/" "wifi.py" "vcprompt-install" "vcprompt" "ssh/" "newtab" "loaddb" "install-key" "imgcat" "gmate" "gitup" "git-remote-branch" "git-notpushed" "git-aware-prompt/" "fonts/" "fixSafari4" "dumpschema" "dumpdb" "beautify" "bashrc" "bash/" ".git/" ".DS_Store" "../" "./")
+
+ ("/Users/Feroli/.emacs.d/elpa/" (22218 19550 0 0) "zoom-frm-20151231.1625/" "yasnippet-20160131.948/" "xquery-mode-20140121.943/" "with-editor-20160128.1201/" "websocket-20160124.2020/" "web-completion-data-20150623.333/" "visual-regexp-steroids-20150411.416/" "visual-regexp-20151206.519/" "virtualenvwrapper-20151127.621/" "use-package-20160209.1633/" "undo-tree-20140509.522/" "typescript-mode-20160126.408/" "transpose-frame-20151126.626/" "solarized-theme-20160106.15/" "smooth-scrolling-20131219.2039/" "smex-20151212.1409/" "smartscan-20131230.739/" "smartparens-20160221.539/" "slime-20160219.1120/" "skewer-mode-20150914.1304/" "simple-httpd-20150430.1755/" "shell-pop-20160208.148/" "scratch-20120830.1028/" "s-20160115.58/" "rust-mode-20160216.1734/" "restclient-20151128.1512/" "request-20160108.33/" "racket-mode-20160213.904/" "quickrun-20160216.616/" "python-mode-20160217.508/" "projectile-20160221.40/" "popup-20151222.1339/" "pkg-info-20150517.443/" "pcache-20151109.639/" "page-break-lines-20160109.1813/" "ox-pandoc-20151222.1553/" "org-20160215/" "olivetti-20160105.355/" "multiple-cursors-20160213.817/" "material-theme-20160211.2354/" "markdown-mode-20160219.913/" "magit-popup-20160130.649/" "magit-20160219.1502/" "macrostep-20151213.145/" "logito-20120225.1255/" "latex-preview-pane-20151023.1303/" "latex-extra-20160209.745/" "js2-mode-20160124.1132/" "ido-vertical-mode-20151003.1833/" "idea-darkula-theme-20160208.2311/" "ht-20150830.1115/" "helm-projectile-20160220.2226/" "helm-core-20160217.958/" "helm-ag-20160126.2147/" "helm-20160217.958/" "git-commit-20160130.649/" "gist-20160118.1656/" "gh-20151216.746/" "geiser-20160215.1732/" "frame-fns-20151231.1322/" "frame-cmds-20160124.826/" "flycheck-20160220.735/" "faceup-20150215.1348/" "f-20151113.123/" "expand-region-20150902.558/" "exec-path-from-shell-20160112.2246/" "epl-20150517.433/" "emmet-mode-20151213.738/" "ein-20160203.2026/" "edit-server-20141231.1358/" "diminish-20151215.915/" "dash-at-point-20140626.35/" "dash-20151216.1315/" "darcula-theme-20160123.1427/" "cyberpunk-theme-20160121.1712/" "company-web-20151219.317/" "company-20160211.520/" "clojure-mode-20160213.1437/" "cl-lib-0.5/" "cl-generic-0.2/" "c-eldoc-20150904.132/" "bind-key-20160206.1256/" "avy-20160202.2357/" "autopair-20140825.427/" "auto-complete-20160107.8/" "auctex-11.89.1/" "atom-one-dark-theme-20160105.748/" "atom-dark-theme-20151119.2335/" "async-20160108.1249/" "archives/" "android-mode-20150106.544/" "ample-theme-20150814.1101/" "aggressive-indent-20160209.956/" "ag-20160126.1135/" "ace-window-20150803.837/" "ace-jump-mode-20140616.115/" "ac-html-csswatcher-20151208.1313/" "ac-html-angular-20151224.2319/" "ac-html-20151005.31/" "../" "./")
+
+ ("/Users/Feroli/bin/dotfiles/bash/" (22218 1714 0 0) "env~" "env" "config~" "config" "aliases~" "aliases" ".DS_Store" "../" "./")
+
+ ("/Users/Feroli/emacsConfig/" (22217 50152 0 0) ".emacs.d/" ".emacs" "../" "./")
+
+ ("/Users/Feroli/sites/angularFunMine/app/js/" (22217 48795 0 0) "test.js" "stateProvider.js" "services/" "filters/" "directives/" "controllers/" "app.js" ".DS_Store" "../" "./")
+
+ ("/Users/Feroli/sites/angularFunMine/app/pages/" (22217 34336 0 0) "Welcome.html" "UserList.html" "UserDetails.html" "TimeoutSample.html" "NewEvent.html" "LocaleSample.html" "FilterSample.html" "EventList.html" "EventDetails.html" "EditProfile.html" "CookieStoreSample.html" "CompileSample.html" "CacheSample.html" ".DS_Store" "../" "./")
+
+ ("/Users/Feroli/Pokemon-Showdown/config/" (22104 62232 0 0) "usergroups.csv" "ladders/" "formats.js" "custom-example.css" "config.js" "config-example.js" "chat-plugins/" "avatars/" "../" "./")
+
+ ("/Users/Feroli/Walk/" (22110 56915 0 0) "Walk.iml" "src/" "Requirements.txt" "Requirements.org~" "Requirements.org" "Requirements.html" "project_walk/" "lib/" "info.txt~" "info.txt" "gen/" "Audience.org~" "Audience.org" ".idea/" ".DS_Store" "../" "./")
+
+ ("/Users/Feroli/Pokemon-Showdown/config/avatars/" (22104 60530 0 0) "README.md" "../" "./")
+
+ ("/Users/Feroli/.emacs.d/elpa/company-web-20151219.317/" (22217 32986 0 0) "company-web.elc" "company-web.el" "company-web-slim.elc" "company-web-slim.el" "company-web-pkg.el" "company-web-jade.elc" "company-web-jade.el" "company-web-html.elc" "company-web-html.el" "company-web-autoloads.el" "../" "./")
+
+ ("/Users/Feroli/infiJava/Collection/associativeCollection/" (22217 31657 0 0) "Number.java~" "Number.java" "Number.class" "Grades.java~" "Grades.java" "Grades.class" "../" "./")
+
+ ("/Users/Feroli/sites/angularFunMine/app/css/" (22217 177 0 0) "bootstrap.css" "app.css" "animation.css" "../" "./")
+
+ ("/Users/Feroli/sites/angularFunMine/app/js/controllers/" (22217 8655 0 0) "UserListCtrl.js" "UserCtrl.js" "TimeoutSampleCtrl.js" "ProfileListCtrl.js" "LocaleSampleCtrl.js" "IndexCtrl.js" "FilterSampleCtrl.js" "EventsCtrlSpec.js" "EventListCtrl.js" "EventCtrl.js" "EditProfileCtrl.js" "EditEventCtrl.js" "CookieStoreSampleCtrl.js" "CompileSampleCtrl.js" "CacheSampleCtrl.js" "../" "./")
+
+ ("/Users/Feroli/git_exercise/IntegerCalculatot/app/src/main/java/com/example/feroli/integercalculatot/" (22104 46902 0 0) "MainActivity.java" "Main2Activity.java" "main.java" "CustomGridAdapter.java" ".DS_Store" "../" "./")
+
+ ("/Users/Feroli/test/" (22060 53150 0 0) "tracking.js" "greeter.ts~" "greeter.ts" "greeter.js" ".DS_Store" "../" "./")
+
+ ("/Users/Feroli/infiJava/" (22068 63531 0 0) "StringList.java~" "StringList.java" "StringList.class" "PairProg.java~" "PairProg.java" "PairProg.class" "Pair.java~" "Pair.java" "Pair.class" "out/" "Numbers.java" "NumberList.java~" "NumberList.java" "NumberList.class" "Node.java" "Node.class" "network_programming/" "mysql/" "MultiThreading/" "ListDriver.java~" "ListDriver.java" "ListDriver.class" "List.java~" "List.java" "List.class" "LinkedList.java~" "LinkedList.java" "LinkedList.class" "Line.java~" "infiJava.iml" "IList.java" "IList.class" "exercises/" "exceptions/" "dst/" "Collection/" "ArrayDisp.java~" "ArrayDisp.java" "ArrayDisp.class" "algos/" ".idea/" ".DS_Store" "../" "./")
+
+ ("/Users/Feroli/AndroidStudioProjects/Threads/src/QuickThread/" (22104 46733 0 0) "App.java~" "App.java" "App.class" "../" "./")
+
+ ("/Users/Feroli/sites/angularMaterialForecastBootstrap/" (22216 34467 0 0) "templates/" "services/" "Routes/" "readme.txt" "pages/" "js/" "index.html" "directives/" "css/" "controllers/" "app.js" ".idea/" ".DS_Store" "../" "./")
+
+ ("/Users/Feroli/notes/org/" (22102 58712 0 0) "ORGmode.org~" "ORGmode.org" "cheatSheet.org~" "cheatSheet.org" ".DS_Store" "../" "./")
+
+ ("/Users/Feroli/sites/twitter-clone/app/views/home/" (22216 49526 0 0) "index.html.erb" "browserify.js" "../" "./")
+
+ ("/usr/" (22148 38628 0 0) "X11R6/" "X11/" "standalone/" "share/" "sbin/" "local/" "libexec/" "lib/" "include/" "dotFile/" "bin/" "../" "./")
+
+ ("/usr/local/" (22216 30434 0 0) "var/" "share/" "sbin/" "README.md" "opt/" "n/" "mysql-utilities-1.5.5/" "mysql-5.6.26-osx10.8-x86_64/" "mysql-5.6.25-osx10.8-x86_64/" "mysql/" "LICENSE.txt" "Library/" "lib/" "include/" "heroku/" "git/" "Frameworks/" "etc/" "CODEOFCONDUCT.md" "Cellar/" "bin/" ".yardopts" ".travis.yml" ".gitignore" ".github/" ".git/" ".DS_Store" "../" "./")
+
+ ("/usr/local/Cellar/" (22216 29519 0 0) "zsh/" "zenity/" "z/" "xz/" "wine/" "wget/" "w3m/" "tree/" "transmission/" "tmux/" "tidy-html5/" "swi-prolog/" "sqlite/" "scrollkeeper/" "sane-backends/" "ruby/" "readline/" "ranger/" "python/" "postgresql/" "poppler/" "pkg-config/" "pixman/" "pcre/" "pango/" "openssl/" "openjpeg/" "nvm/" "node010/" "node/" "nettle/" "mysql/" "mplayer/" "mongodb/" "mercurial/" "media-info/" "makedepend/" "lynx/" "lua/" "little-cms2/" "libyaml/" "libxml2/" "libusb-compat/" "libusb/" "libtool/" "libtiff/" "libtasn1/" "libpng/" "libksba/" "libicns/" "libgphoto2/" "libgpg-error/" "libffi/" "libevent/" "libepoxy/" "libcaca/" "jpeg/" "jasper/" "icu4c/" "htop-osx/" "highlight/" "hicolor-icon-theme/" "harfbuzz/" "gtk+3/" "gsettings-desktop-schemas/" "gobject-introspection/" "gnutls/" "gnome-doc-utils/" "gmp/" "glib/" "gettext/" "gdk-pixbuf/" "gdbm/" "gd/" "freetype/" "fontconfig/" "exiftool/" "emacs/" "elinks/" "docbook/" "cairo/" "cabextract/" "brew-cask/" "boost/" "bdw-gc/" "automake/" "autoconf/" "atool/" "atk/" "archey/" ".DS_Store" "../" "./")
+
+ ("/usr/local/Cellar/emacs/" (22007 5483 0 0) "HEAD/" ".DS_Store" "../" "./")
+
+ ("/usr/local/Cellar/emacs/HEAD/" (22007 5483 0 0) "var/" "share/" "README" "libexec/" "INSTALL_RECEIPT.json" "homebrew.mxcl.emacs.plist" "Emacs.app/" "COPYING" "bin/" ".DS_Store" "../" "./")
+
+ ("/usr/local/Cellar/emacs/HEAD/share/" (21984 61179 0 0) "man/" "info/" "icons/" "emacs/" "applications/" "appdata/" "../" "./")
+
+ ("/usr/local/Cellar/emacs/HEAD/share/emacs/" (21984 61194 0 0) "site-lisp/" "25.0.50/" "../" "./")
+
+ ("/usr/local/Cellar/emacs/HEAD/share/emacs/25.0.50/" (21984 61194 0 0) "site-lisp/" "lisp/" "etc/" "../" "./")
+
+ ("/Users/Feroli/.WebStorm10/" (21885 36942 0 0) "restart/" "../" "./")
+
+ ("/Users/Feroli/sites/Multivision/" (22047 49468 0 0) "server.js" "server/" "public/" "package.json" "node_modules/" "bower.json" ".idea/" ".gitignore" ".git/" ".eslintrc~" ".eslintrc" ".DS_Store" ".bowerrc" "../" "./")
+
+ ("/Users/Feroli/sites/twitter-clone/app/assets/" (22214 27198 0 0) "stylesheets/" "javascripts/" "images/" "frontend/" "../" "./")
+
+ ("/Users/Feroli/notes/kcl/osc/" (22214 10144 0 0) "oscCw2.org~" "oscCw2.org" "oscCW1.org~" "oscCW1.org" "osc4.org" "osc1tut.org~" "osc1tut.org" "osc1.org~" "osc1.org" "oc3Cw.org" "MultiQueue.png" "Hyperthreading.png" "../" "./")
+
+ ("/Users/Feroli/sites/twitter-clone/app/" (22214 5931 0 0) "views/" "models/" "mailers/" "helpers/" "controllers/" "assets/" "../" "./")
+
+ ("/Users/Feroli/sites/Ruby/" (22214 2577 0 0) "index.html" ".DS_Store" "../" "./")
+
+ ("/Users/Feroli/.oh-my-zsh/" (22203 9368 0 0) "zsh-syntax-highlighting/" "tools/" "themes/" "templates/" "README.markdown" "plugins/" "oh-my-zsh.sh" "MIT-LICENSE.txt" "log/" "lib/" "custom/" "cache/" ".gitignore" "../" "./")
+
+ ("/Users/Feroli/Downloads/" (22213 51530 0 0) "Wineskin Winery.app/" "whiteoctober-angularconnect.pkpass" "whiteoctober-angularconnect-ticket-J0Y3-1.pdf" "week1-TutorialLab.pdf" "WD My Cloud Setup.app/" "VID_20160206_220436.mp4" "Victoria Station Map.pdf" "Victoria Station Map (1).pdf" "unnamed.png" "Tutorial1.pdf" "tree.jpg" "TexmakerMacosxLion/" "Test1932394850.pdf" "SwiftKey Keyboard   Emoji v5.4.dmg" "SwiftKey Keyboard   Emoji v5.4 (1).dmg" "sunset.png" "Spectacle.app/" "Screen Shot 2016-01-08 at 21.58.30.png" "Sao Dingo de Beira mar_1.pdf" "salsa.jpg" "salsa-one.jpg" "Resume.zip" "reactjs-on-rails-building-full-stack-web-app.zip" "reactjs-on-rails-building-full-stack-web-app/" "psddude-tinsel-text-tutorial/" "projrunw-master.zip" "projrunw-master/" "Postgres-9.5.1.0.zip" "Pocket.Salsa.v.2.14.b.20140224.crk.apk" "pet contract natalie .pages" "pet contract natalie  (1).pages" "pegigree.psd" "pegigree.pdf" "output.zip" "OSCWeek4/" "New Doc_1.pdf" "New Doc_1 (1).pdf" "New Doc 4_1.pdf" "New Doc 4_1.jpg" "New Doc 21_1.jpg" "New Doc 1_1.pdf" "New Doc 1_1.jpg" "New Doc 16_1.pdf" "MySQL-install.plist" "mysql-connector-java-5.1.36/" "My Book Live Setup.app/" "motoring expenses 2014-2015.xlsx" "mongo-hacker-master/" "modulehandbook.pdf" "MesloLGMDZRegularforPowerline.otf" "Maxime Crochemore.pdf" "materialtest-master.zip" "materialtest-master/" "Material-Theme-Icon.zip" "material-dark.itermcolors" "Material Theme.zip" "Material Theme/" "M. Huth and M. Ryan, “Logic in Computer Science – Modeling and Reasoning about systems”, Second Edition, Cambridge University Press, 2004-Ref8.pdf" "localhost_files/" "localhost.html" "LILYAZALEAS.pdf" "labpack.pdf" "labpack (2).pdf" "labpack (1).pdf" "kitty certificado tica.pdf" "joy.jpg" "Janella A Estrela no luar de Beira Mar_1.pdf" "InconsolataForPowerline.otf" "Inconsolata for Powerline.otf" "icalexport.ics" "heroku-toolbelt.pkg" "HackKing's.vcf" "gson-2.5.jar" "glitter_psd.zip" "glitter.psd" "GATEWAY ULTRA 3.5.1 BETA/" "document.pdf" "DIAGNOSTIC.pdf" "diag.jpg" "DevMenu.3ds" "DetailsOfBill.pdf" "DB Notes.pdf" "DaisyDisk (4.0.1).dmg" "Dahalia.jpg" "Dahalia 1.jpg" "CV-F.-Aucomte.pdf" "CS1 Notes.PDF" "chrome_superbar32.png" "CERT1643162.pdf" "CERT1632855.pdf" "CERT1632853.pdf" "ccleaner_superbar32.png" "callaDiagStraight.pdf" "calla.psd" "calla.pdf" "calla.jpg" "calendar.ics" "calculator_superbar32.png" "Brackets.1.5.Extract.dmg" "BigBlueMenu/" "Atom.app/" "AngularConnect.vcf" "angularconnect.ics" "Andrew Coles.pdf" "Amanda Coles.pdf" "adobereader_superbar32.png" "20151114_213128.mp4" "1442951222601.png" "119152.jpg" ".localized" ".DS_Store" "../" "./")
+
+ ("/Users/Feroli/Downloads/OSCWeek4/" (22213 47654 0 0) "PageTableEntry.java" "PageTableEntry.class" "out/" "OSCWeek4.iml" "MemoryManagementUnit.java" "MemoryManagementUnit.class" "AllocationTest.java" "AllocationTest.class" ".idea/" ".DS_Store" "../" "./")
+
+ ("/Users/Feroli/notes/persona/" (22212 65279 0 0) "yo.org" "affirmaciones.org" "../" "./")
+
+ ("/Users/Feroli/sites/angularFunMine/scripts/" (22212 61282 0 0) "web-server.js" "UserCtrl.js" "EventsCtrl.js" ".DS_Store" "../" "./")
+
+ ("/Users/Feroli/sites/angularFunMine/app/partials/" (22212 60897 0 0) "nav.html" "../" "./")
+
+ ("/Users/Feroli/sites/angularFunMine/app/" (22212 60885 0 0) "test.txt/" "partials/" "pages/" "lib/" "js/" "index.html" "img/" "fonts/" "favicon.ico" "datepickerDirectiveFiles/" "data/" "css/" ".DS_Store" "../" "./")
+
+ ("/Users/Feroli/sites/angularFunMine/app/js/services/" (22212 60320 0 0) "UserData.js" "User.js" "GravatarUrlBuilder.js" "ExceptionHandler.js" "EventDataRe.js" "EventData.js" "CacheSampleService.js" "../" "./")
+
+ ("/Users/Feroli/sites/angularFunMine/" (22209 14413 0 0) "TODO.org" "test/" "server.sh" "server.bat" "scripts/" "README.md" "package.json" "node_modules/" "bower.json" "app/" ".idea/" ".DS_Store" "../" "./")
+
+ ("/Users/Feroli/sites/angulaFundamentals/4-angularjs-fundamentals-m4-routing-exercise-files/Finished/02-MoreRouting/AppData/" (21925 854 0 0) "Web.Release.config" "Web.Debug.config" "Web.config" "Properties/" "packages.config" "obj/" "Global.asax.cs" "Global.asax" "favicon.ico" "Controllers/" "bin/" "AppData.csproj" "App_Start/" "App_Data/" "../" "./")
+
+ ("/Users/Feroli/sites/angulaFundamentals/4-angularjs-fundamentals-m4-routing-exercise-files/" (22172 58634 0 0) "Original/" "Finished/" ".DS_Store" "../" "./")
+
+ ("/Users/Feroli/sites/angulaFundamentals/4-angularjs-fundamentals-m4-routing-exercise-files/Finished/" (22190 22876 0 0) "08-LocationService/" "07-TemplateAndResolve/" "06-EnablingHtml5Routing/" "05-UsingTheRouteService/" "04-AccessingParameters/" "03-CreatingADefaultRoute/" "02-MoreRouting/" "01-AddingYourFirstRoute/" ".DS_Store" "../" "./")
+
+ ("/Users/Feroli/sites/angulaFundamentals/4-angularjs-fundamentals-m4-routing-exercise-files/Finished/02-MoreRouting/" (21925 854 0 0) "test/" "server.sh" "server.bat" "scripts/" "README.md" "package.json" "AppData.sln" "AppData/" "app/" "../" "./")
+
+ ("/Users/Feroli/sites/angulaFundamentals/4-angularjs-fundamentals-m4-routing-exercise-files/Finished/02-MoreRouting/app/" (21925 854 0 0) "templates/" "lib/" "js/" "index.html" "img/" "favicon.ico" "EditProfileFiles/" "EditProfile.html" "datepickerDirectiveFiles/" "data/" "css/" "../" "./")
+
+ ("/Users/Feroli/sites/angulaFundamentals/4-angularjs-fundamentals-m4-routing-exercise-files/Finished/02-MoreRouting/app/templates/" (21925 854 0 0) "NewEvent.html" "EventList.html" "EventDetails.html" "../" "./")
+
+ ("/Users/Feroli/sites/angularFunMine/.idea/" (22190 24570 0 0) "workspace.xml" "vcs.xml" "modules.xml" "misc.xml" "libraries/" "jsLibraryMappings.xml" "inspectionProfiles/" "deployment.xml" "dbnavigator.xml" "angularFunMine.iml" ".name" "../" "./")
+
+ ("/Users/Feroli/sites/angularFunMine/app/js/filters/" (22207 9130 0 0) "filters.js" "../" "./")
+
+ ("/Users/Feroli/sites/angularFunMine/app/data/" (21905 20330 0 0) "event/" "../" "./")
+
+ ("/Users/Feroli/sites/angularFunMine/app/data/event/" (22207 5017 0 0) "999.json" "6.json" "4.json" "3.json" "2.json" "1.json" "0.json" "../" "./")
+
+ ("/etc/" (22205 58363 0 0) "zshenv" "xtab" "ttys" "syslog.conf" "sudoers" "sudo_lecture" "sshd_config" "ssh_config" "snmp/" "shells" "services" "security/" "rtadvd.conf" "rpc" "rmtab" "resolv.conf" "rc.netboot" "rc.imaging" "rc.common" "racoon/" "protocols" "profile" "ppp/" "postfix/" "php.ini.default" "php-fpm.conf.default" "pf.os" "pf.conf" "pf.anchors/" "periodic/" "path~" "paths~" "paths.d/" "paths" "path" "passwd" "pam.d/" "openssl/" "openldap/" "ntp_opendirectory.conf" "ntp.conf" "ntp-restrict.conf" "notify.conf" "nfs.conf" "newsyslog.d/" "newsyslog.conf" "networks" "nanorc" "mysql/" "my.cnf~" "my.cnf" "moduli" "master.passwd" "manpaths.d/" "manpaths" "man.conf" "mail.rc" "mach_init_per_user.d/" "mach_init_per_login_session.d/" "mach_init.d/" "locate.rc" "localtime" "krb5.keytab" "kern_loader.conf" "irbrc" "hosts.equiv" "hosts" "group" "gettytab" "ftpusers" "ftpd.conf.default" "ftpd.conf" "fstab.hd" "find.codes" "emond.d/" "efax.rc" "dnsextd.conf" "defaults/" "cups/" "csh.logout" "csh.login" "csh.cshrc" "com.apple.screensharing.agent.launchd" "bashrc" "autofs.conf" "auto_master" "auto_home" "asl.conf" "asl/" "apache2/" "aliases.db" "aliases" "afpovertcp.cfg" "../" "./")
+
+ ("/Users/Feroli/sites/angularFunMine/app/pages/EventList.html/" (22205 13840 0 0) "../" "./")
+
+ ("/Users/Feroli/.emacs.d/elpa/evil-nerd-commenter-20160209.49/" (22205 10750 0 0) "evil-nerd-commenter.elc" "evil-nerd-commenter.el" "evil-nerd-commenter-pkg.el" "evil-nerd-commenter-operator.el" "evil-nerd-commenter-autoloads.el" "../" "./")
+
+ ("/usr/local/Cellar/emacs/HEAD/share/emacs/25.0.50/etc/" (21984 61204 0 0) "yow.lines" "WHY-FREE" "tutorials/" "TODO" "themes/" "THE-GNU-PROJECT" "TERMS" "srecode/" "spook.lines" "ses-example.ses" "schema/" "rgb.txt" "refcards/" "README" "publicsuffix.txt.gz" "ps-prin1.ps" "ps-prin0.ps" "PROBLEMS" "package-keyring.gpg" "ORG-NEWS" "org/" "ORDERS" "NXML-NEWS" "nxml/" "NEXTSTEP" "NEWS.24" "NEWS.23" "NEWS.22" "NEWS.21" "NEWS.20" "NEWS.19" "NEWS.18" "NEWS.1-17" "NEWS" "MORE.STUFF" "MH-E-NEWS" "MACHINES" "LINUX-GNU" "JOKES" "images/" "HELLO" "grep.txt" "gnus-tut.txt" "GNUS-NEWS" "gnus/" "GNU" "future-bug" "FTP" "forms/" "ETAGS.README" "ETAGS.EBNF" "ERC-NEWS" "enriched.txt" "emacs.icon" "emacs.desktop" "emacs.appdata.xml" "emacs-buffer.gdb" "edt-user.el" "e/" "DOC" "DISTRIB" "DEVEL.HUMOR" "DEBUG" "COPYING" "compilation.txt" "charsets/" "CENSORSHIP" "CALC-NEWS" "AUTHORS" "../" "./")
+
+ ("/Users/Feroli/infiJava/Collection/" (22001 16014 0 0) "WordList.java~" "WordList.java" "WordList.class" "SquareDance.java~" "SquareDance.java" "SquareDance.class" "Names.java~" "Names.java" "Names.class" "Lines.java~" "Lines.java" "Lines.class" "danceNew.txt" "dance.txtx~" "dance.txt" "associativeCollection/" "Alpha.java~" "Alpha.java" "Alpha.class" "Alist.java~" "Alist.java" "Alist.class" ".DS_Store" "*eshell*" "../" "./")
+
+ ("/Users/Feroli/Downloads/cw/src/com/company/" (22204 38767 0 0) "Runner.class" "Printer.java" "Printer.class" "Main.java" "Main.class" "../" "./")
+
+ ("/Users/Feroli/Downloads/cw/" (22204 30576 0 0) "src/" "out/" "cw.iml" ".idea/" "../" "./")
+
+ ("/Users/Feroli/yackCrawl/" (22089 49462 0 0) "SunkaFire/" ".idea/" ".gitignore" ".git/" ".DS_Store" "../" "./")
+
+ ("/Users/Feroli/Downloads/cw/src/com/" (22204 29453 0 0) "company/" "../" "./")
+
+ ("/Users/Feroli/Downloads/cw/src/" (22204 29453 0 0) "com/" "../" "./")
+
+ ("/Users/Feroli/.emacs.d/elpa/darcula-theme-20160106.1352/" (22203 15012 0 0) "darcula-theme.el~" "darcula-theme.elc" "darcula-theme.el" "darcula-theme-pkg.elc" "darcula-theme-pkg.el" "darcula-theme-autoloads.el~" "darcula-theme-autoloads.el" "../" "./")
+
+ ("/Users/Feroli/git_exercise/" (22203 9370 0 0) "TestScript/" "testBranch.java~" "testBranch.java" "testBranch.class" "readme.txt" "MyApplication2/" "Minesweeper/" "IntegerCalculatot/" "HelloWorld.java~" "HelloWorld.java" "HelloWorld.class" "helloQ.java~" "helloQ.java" "helloQ.class" "ExploringTheInterface/" "emacsConfig/" "counterApp/" ".DS_Store" "#HelloWorld.java#" "../" "./")
+
+ ("/Users/Feroli/.bash/git-aware-prompt/" (22203 9367 0 0) "README.md" "prompt.sh" "preview.png" "main.sh" "LICENSE" "colors.sh" "../" "./")
+
+ ("/Users/Feroli/sites/angulaFundamentals/3-angularjs-fundamentals-m3-services-exercise-files/Finished/09-AnchorScrollService/app/" (22200 39483 0 0) "NewEvent.html" "lib/" "js/" "img/" "favicon.ico" "EventDetails.html" "EditProfileFiles/" "EditProfile.html" "datepickerDirectiveFiles/" "data/" "css/" ".DS_Store" "../" "./")
+
+ ("/Users/Feroli/notes/projectRun/" (22201 62334 0 0) "requirements.txt" "requirements.tex~" "requirements.tex" "requirements.org~" "requirements.org" "meeting1.org~" "meeting1.org" ".DS_Store" "#meeting1.org#" "../" "./")
+
+ ("/Users/Feroli/.config/" (22186 49331 0 0) "xm1/" "ranger/" "powerline/" "menus/" "fontconfig/" "filezilla/" "configstore/" ".DS_Store" "../" "./")
+
+ ("/Users/Feroli/.bash/" (22029 44288 0 0) "git-aware-prompt/" "../" "./")
+
+ ("/Users/" (21861 40037 0 0) "Shared/" "Guest/" "Feroli/" ".localized" "../" "./")
+
+ ("/Users/Feroli/sites/angulaFundamentals/3-angularjs-fundamentals-m3-services-exercise-files/Finished/09-AnchorScrollService/" (21925 844 0 0) "test/" "server.sh" "server.bat" "scripts/" "README.md" "package.json" "AppData.sln" "AppData/" "app/" "../" "./")
+
+ ("/Users/Feroli/sites/angulaFundamentals/3-angularjs-fundamentals-m3-services-exercise-files/Finished/" (22190 10278 0 0) "17-CookieStore/" "16-FilterService/" "15-ExceptionHandlerSvc/" "14-TimeoutService/" "13-LocaleService/" "12-ParseService/" "11-CompileService/" "10-CacheFactoryService/" "09-AnchorScrollService/" "08-SavingDataResource/" "07-ResourceService/" "06-UsingHttpPromises/" "05-UpdateIisServer/" "04-UpdateNodeServer/" "03-HttpService/" "02-AnotherCustomService/" "01-CreatingYourFirstCustomService/" ".DS_Store" "../" "./")
+
+ ("/Users/Feroli/sites/angulaFundamentals/3-angularjs-fundamentals-m3-services-exercise-files/" (22172 58628 0 0) "Original/" "Finished/" ".DS_Store" "../" "./")
+)
+
+;; ----- ido-unc-hosts-cache -----
+t

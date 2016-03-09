@@ -1,0 +1,2486 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2016-03-01 Tue 12:09 -->
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="viewport" content="width=device-width, initial-scale=1" />
+<title>Emacs Configuration</title>
+<meta  name="generator" content="Org-mode" />
+<meta  name="author" content="Fernando" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  pre.src-sh:before    { content: 'sh'; }
+  pre.src-bash:before  { content: 'sh'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-R:before     { content: 'R'; }
+  pre.src-perl:before  { content: 'Perl'; }
+  pre.src-java:before  { content: 'Java'; }
+  pre.src-sql:before   { content: 'SQL'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  /*]]>*/-->
+</style>
+<link rel="stylesheet" type="text/css" href="http://www.pirilampo.org/styles/readtheorg/css/htmlize.css"/>
+<link rel="stylesheet" type="text/css" href="http://www.pirilampo.org/styles/readtheorg/css/readtheorg.css"/>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="http://www.pirilampo.org/styles/lib/js/jquery.stickytableheaders.js"></script>
+<script type="text/javascript" src="http://www.pirilampo.org/styles/readtheorg/js/readtheorg.js"></script>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2013 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">Emacs Configuration</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#orgheadline1">1. Installing Emacs</a></li>
+<li><a href="#orgheadline2">2. Personal Information</a></li>
+<li><a href="#orgheadline3">3. Customize settings</a></li>
+<li><a href="#orgheadline9">4. Theme</a>
+<ul>
+<li><a href="#orgheadline4">4.1. Atom One dark theme</a></li>
+<li><a href="#orgheadline5">4.2. Solarized theme</a></li>
+<li><a href="#orgheadline6">4.3. Monokai theme</a></li>
+<li><a href="#orgheadline7">4.4. Waher theme</a></li>
+<li><a href="#orgheadline8">4.5. Convenient theme functions</a></li>
+</ul>
+</li>
+<li><a href="#orgheadline10">5. Font</a></li>
+<li><a href="#orgheadline11">6. Sane defaults</a></li>
+<li><a href="#orgheadline12">7. Mac customizations</a></li>
+<li><a href="#orgheadline13">8. List buffers</a></li>
+<li><a href="#orgheadline14">9. Recentf</a></li>
+<li><a href="#orgheadline26">10. Org mode</a>
+<ul>
+<li><a href="#orgheadline17">10.1. Org activation bindings</a>
+<ul>
+<li><a href="#orgheadline15">10.1.1. Org agenda</a></li>
+<li><a href="#orgheadline16">10.1.2. Org capture</a></li>
+</ul>
+</li>
+<li><a href="#orgheadline18">10.2. Org setup</a></li>
+<li><a href="#orgheadline19">10.3. Org tags</a></li>
+<li><a href="#orgheadline20">10.4. Org babel languages</a></li>
+<li><a href="#orgheadline21">10.5. Org babel/source blocks</a></li>
+<li><a href="#orgheadline24">10.6. Org exporting</a>
+<ul>
+<li><a href="#orgheadline22">10.6.1. Pandoc exporter</a></li>
+<li><a href="#orgheadline23">10.6.2. org-pandoc</a></li>
+</ul>
+</li>
+<li><a href="#orgheadline25">10.7. Org bullets</a></li>
+</ul>
+</li>
+<li><a href="#orgheadline27">11. Tramp</a></li>
+<li><a href="#orgheadline29">12. Locate</a></li>
+<li><a href="#orgheadline30">13. Shell</a></li>
+<li><a href="#orgheadline34">14. Window</a>
+<ul>
+<li><a href="#orgheadline31">14.1. windmove</a></li>
+<li><a href="#orgheadline32">14.2. Winner mode</a></li>
+<li><a href="#orgheadline33">14.3. Transpose frame</a></li>
+</ul>
+</li>
+<li><a href="#orgheadline35">15. Ido</a></li>
+<li><a href="#orgheadline36">16. Whitespace mode</a></li>
+<li><a href="#orgheadline39">17. Google</a>
+<ul>
+<li><a href="#orgheadline37">17.1. google</a></li>
+<li><a href="#orgheadline38">17.2. google this</a></li>
+</ul>
+</li>
+<li><a href="#orgheadline91">18. ELPA packages</a>
+<ul>
+<li><a href="#orgheadline40">18.1. Ace Jump Mode</a></li>
+<li><a href="#orgheadline41">18.2. avy</a></li>
+<li><a href="#orgheadline42">18.3. Ace Window</a></li>
+<li><a href="#orgheadline43">18.4. Android mode</a></li>
+<li><a href="#orgheadline44">18.5. C-Eldoc</a></li>
+<li><a href="#orgheadline45">18.6. Clojure</a></li>
+<li><a href="#orgheadline46">18.7. Dash</a></li>
+<li><a href="#orgheadline47">18.8. Highligh line</a></li>
+<li><a href="#orgheadline28">18.9. Helm</a></li>
+<li><a href="#orgheadline49">18.10. Magit</a>
+<ul>
+<li><a href="#orgheadline48">18.10.1. Fullscreen magit</a></li>
+</ul>
+</li>
+<li><a href="#orgheadline50">18.11. Edit With Emacs</a></li>
+<li><a href="#orgheadline51">18.12. Elfeed</a></li>
+<li><a href="#orgheadline52">18.13. Emacs IPython Notebook</a></li>
+<li><a href="#orgheadline53">18.14. Expand region</a></li>
+<li><a href="#orgheadline54">18.15. Floobits</a></li>
+<li><a href="#orgheadline56">18.16. Flycheck</a>
+<ul>
+<li><a href="#orgheadline55">18.16.1. Linter setups</a></li>
+</ul>
+</li>
+<li><a href="#orgheadline57">18.17. Guiding line</a></li>
+<li><a href="#orgheadline58">18.18. Gists</a></li>
+<li><a href="#orgheadline59">18.19. Macrostep</a></li>
+<li><a href="#orgheadline60">18.20. Markdown mode</a></li>
+<li><a href="#orgheadline61">18.21. Multiple cursors</a></li>
+<li><a href="#orgheadline62">18.22. Olivetti</a></li>
+<li><a href="#orgheadline63">18.23. Perspective</a></li>
+<li><a href="#orgheadline64">18.24. Projectile</a></li>
+<li><a href="#orgheadline65">18.25. Python</a></li>
+<li><a href="#orgheadline66">18.26. Racket</a></li>
+<li><a href="#orgheadline67">18.27. Restclient</a></li>
+<li><a href="#orgheadline68">18.28. Smartparens mode</a></li>
+<li><a href="#orgheadline69">18.29. Smartparens org mode</a></li>
+<li><a href="#orgheadline70">18.30. Smartscan</a></li>
+<li><a href="#orgheadline71">18.31. Smex</a></li>
+<li><a href="#orgheadline72">18.32. Aggressive indent</a></li>
+<li><a href="#orgheadline73">18.33. Skewer mode</a></li>
+<li><a href="#orgheadline74">18.34. Smoothscrolling</a></li>
+<li><a href="#orgheadline75">18.35. Typescript mode</a></li>
+<li><a href="#orgheadline76">18.36. Visual-regexp</a></li>
+<li><a href="#orgheadline77">18.37. Webmode</a></li>
+<li><a href="#orgheadline78">18.38. Yasnippet</a></li>
+<li><a href="#orgheadline79">18.39. Emmet</a></li>
+<li><a href="#orgheadline80">18.40. Zoom-frm</a></li>
+<li><a href="#orgheadline81">18.41. Scratch</a></li>
+<li><a href="#orgheadline82">18.42. Shell pop</a></li>
+<li><a href="#orgheadline83">18.43. SLIME</a></li>
+<li><a href="#orgheadline84">18.44. Quickrun</a></li>
+<li><a href="#orgheadline85">18.45. Visible mode</a></li>
+<li><a href="#orgheadline86">18.46. Virtualenvwrapper</a></li>
+<li><a href="#orgheadline87">18.47. XQuery mode</a></li>
+<li><a href="#orgheadline88">18.48. LaTeX Extra</a></li>
+<li><a href="#orgheadline89">18.49. LaTeX Preview Mode</a></li>
+<li><a href="#orgheadline90">18.50. Undo Tree</a></li>
+</ul>
+</li>
+<li><a href="#orgheadline92">19. Computer-specific settings</a></li>
+<li><a href="#orgheadline109">20. Languages</a>
+<ul>
+<li><a href="#orgheadline93">20.1. C/Java</a></li>
+<li><a href="#orgheadline96">20.2. Haskell</a>
+<ul>
+<li><a href="#orgheadline94">20.2.1. Hindent</a></li>
+<li><a href="#orgheadline95">20.2.2. ghc</a></li>
+</ul>
+</li>
+<li><a href="#orgheadline97">20.3. Jasmin</a></li>
+<li><a href="#orgheadline98">20.4. Rust</a></li>
+<li><a href="#orgheadline108">20.5. Wed Dev</a>
+<ul>
+<li><a href="#orgheadline99">20.5.1. Angular</a></li>
+<li><a href="#orgheadline100">20.5.2. company mode</a></li>
+<li><a href="#orgheadline101">20.5.3. company-web</a></li>
+<li><a href="#orgheadline102">20.5.4. company ghc</a></li>
+<li><a href="#orgheadline103">20.5.5. auto-pair</a></li>
+<li><a href="#orgheadline107">20.5.6. Ac's</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#orgheadline117">21. Misc</a>
+<ul>
+<li><a href="#orgheadline110">21.1. Display Time</a></li>
+<li><a href="#orgheadline111">21.2. Display Battery Mode</a></li>
+<li><a href="#orgheadline112">21.3. Docview keybindings</a></li>
+<li><a href="#orgheadline113">21.4. OS X scrolling</a></li>
+<li><a href="#orgheadline114">21.5. Emacsclient</a></li>
+<li><a href="#orgheadline115">21.6. Cl-library</a></li>
+<li><a href="#orgheadline116">21.7. Hash Keybind</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<p>
+This emacs configuration is largely influenced by <a href="https://github.com/danielmai/.emacs.d">Mai's emacs configuration</a>
+</p>
+
+<div id="outline-container-orgheadline1" class="outline-2">
+<h2 id="orgheadline1"><span class="section-number-2">1</span> Installing Emacs</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+On OS X, <a href="http://brew.sh/">homebrew</a> is an easy way to install emacs.
+</p>
+
+<p>
+Here's what the parameter means.
+</p>
+<dl class="org-dl">
+<dt><code>--with-cocoa</code></dt><dd>installs emacs with the OS X GUI version</dd>
+<dt><code>--with-imagemagick</code></dt><dd>installs emacs with imagemagick support for image processing</dd>
+<dt><code>--with-gnutls</code></dt><dd>installs emacs with GnuTLS to utilize encrypted SSL and TLS connections</dd>
+</dl>
+
+<div class="org-src-container">
+
+<pre class="src src-sh">brew install emacs --with-cocoa --with-imagemagick --with-gnutls
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgheadline2" class="outline-2">
+<h2 id="orgheadline2"><span class="section-number-2">2</span> Personal Information</h2>
+<div class="outline-text-2" id="text-2">
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(setq user-full-name "Fernando Ania"
+      user-mail-address "javierania21@gmail.com")
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgheadline3" class="outline-2">
+<h2 id="orgheadline3"><span class="section-number-2">3</span> Customize settings</h2>
+<div class="outline-text-2" id="text-3">
+<p>
+Set up the customize file to its own separate file, instead of saving
+customize settings in <a href="init.el">init.el</a>.
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(setq custom-file (expand-file-name "custom.el" user-emacs-directory))
+(load custom-file)
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgheadline9" class="outline-2">
+<h2 id="orgheadline9"><span class="section-number-2">4</span> Theme</h2>
+<div class="outline-text-2" id="text-4">
+</div><div id="outline-container-orgheadline4" class="outline-3">
+<h3 id="orgheadline4"><span class="section-number-3">4.1</span> Atom One dark theme</h3>
+<div class="outline-text-3" id="text-4-1">
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(use-package atom-one-dark-theme
+  :if (window-system)
+  :ensure t
+  :init 
+  (progn (load-theme 'atom-one-dark t)))
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgheadline5" class="outline-3">
+<h3 id="orgheadline5"><span class="section-number-3">4.2</span> Solarized theme</h3>
+<div class="outline-text-3" id="text-4-2">
+<p>
+Here's some configuration for <a href="https://github.com/bbatsov/solarized-emacs/">bbatsov's solarized themes</a>.
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(use-package solarized-theme
+  :defer 10
+  :init
+  (setq solarized-use-variable-pitch nil)
+  :ensure t)
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgheadline6" class="outline-3">
+<h3 id="orgheadline6"><span class="section-number-3">4.3</span> Monokai theme</h3>
+<div class="outline-text-3" id="text-4-3">
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(use-package monokai-theme
+  :if (window-system)
+  :ensure t
+  :init
+  (setq monokai-use-variable-pitch nil))
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgheadline7" class="outline-3">
+<h3 id="orgheadline7"><span class="section-number-3">4.4</span> Waher theme</h3>
+<div class="outline-text-3" id="text-4-4">
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(use-package waher-theme
+  if (window-system)
+  :ensure t
+  :init
+  (load-theme 'waher))
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgheadline8" class="outline-3">
+<h3 id="orgheadline8"><span class="section-number-3">4.5</span> Convenient theme functions</h3>
+<div class="outline-text-3" id="text-4-5">
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(defun switch-theme (theme)
+  "Disables any currently active themes and loads THEME."
+  ;; This interactive call is taken from `load-theme'
+  (interactive
+   (list
+    (intern (completing-read "Load custom theme: "
+                             (mapc 'symbol-name
+                                   (custom-available-themes))))))
+  (let ((enabled-themes custom-enabled-themes))
+    (mapc #'disable-theme custom-enabled-themes)
+    (load-theme theme t)))
+
+(defun disable-active-themes ()
+  "Disables any currently active themes listed in `custom-enabled-themes'."
+  (interactive)
+  (mapc #'disable-theme custom-enabled-themes))
+
+(bind-key "s-&lt;f12&gt;" 'switch-theme)
+(bind-key "s-&lt;f11&gt;" 'disable-active-themes)
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgheadline10" class="outline-2">
+<h2 id="orgheadline10"><span class="section-number-2">5</span> Font</h2>
+<div class="outline-text-2" id="text-5">
+<p>
+<a href="http://levien.com/type/myfonts/inconsolata.html">Inconsolata</a> is a nice monospaced font.
+</p>
+
+<p>
+To install it on OS X, you can use Homebrew with <a href="http://caskroom.io/">Homebrew Cask</a>.
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-sh"># You may need to run these two lines if you haven't set up Homebrew
+# Cask and its fonts formula.
+brew install caskroom/cask/brew-cask
+brew tap caskroom/fonts
+
+brew cask install font-inconsolata
+</pre>
+</div>
+
+<p>
+And here's how we tell Emacs to use the font we want to use.
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(add-to-list 'default-frame-alist
+             '(font . "Inconsolata-14"))
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgheadline11" class="outline-2">
+<h2 id="orgheadline11"><span class="section-number-2">6</span> Sane defaults</h2>
+<div class="outline-text-2" id="text-6">
+<p>
+Let's start with some sane defaults, shall we?
+</p>
+
+<p>
+Sources for this section include <a href="https://github.com/magnars/.emacs.d/blob/master/settings/sane-defaults.el">Magnars Sveen</a> and <a href="http://pages.sachachua.com/.emacs.d/Sacha.html">Sacha Chua</a>.
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">;; These functions are useful. Activate them.
+(put 'downcase-region 'disabled nil)
+(put 'upcase-region 'disabled nil)
+(put 'narrow-to-region 'disabled nil)
+(put 'dired-find-alternate-file 'disabled nil)
+
+;; Answering just 'y' or 'n' will do
+(defalias 'yes-or-no-p 'y-or-n-p)
+
+;; Keep all backup and auto-save files in one directory
+(setq backup-directory-alist '(("." . "~/.saves")))
+(setq auto-save-file-name-transforms '((".*" "~/.saves/auto-save-list/" t)))
+
+;; UTF-8 please
+(setq locale-coding-system 'utf-8) ; pretty
+(set-terminal-coding-system 'utf-8) ; pretty
+(set-keyboard-coding-system 'utf-8) ; pretty
+(set-selection-coding-system 'utf-8) ; please
+(prefer-coding-system 'utf-8) ; with sugar on top
+(setq-default indent-tabs-mode nil)
+
+;; Turn off the blinking cursor
+(blink-cursor-mode -1)
+
+(setq-default indent-tabs-mode nil)
+(setq-default indicate-empty-lines t)
+
+;; Don't count two spaces after a period as the end of a sentence.
+;; Just one space is needed.
+(setq sentence-end-double-space nil)
+
+;; delete the region when typing, just like as we expect nowadays.
+(delete-selection-mode t)
+
+(show-paren-mode t)
+
+(column-number-mode t)
+
+(global-visual-line-mode)
+(diminish 'visual-line-mode)
+
+(setq uniquify-buffer-name-style 'forward)
+
+;; -i gets alias definitions from .bash_profile
+(setq shell-command-switch "-ic")
+
+;; Don't beep at me
+(setq visible-bell t)
+</pre>
+</div>
+
+<p>
+The following function for <code>occur-dwim</code> is taken from <a href="https://github.com/abo-abo">Oleh Krehel</a> from
+<a href="http://oremacs.com/2015/01/26/occur-dwim/">his blog post at (or emacs</a>. It takes the current region or the symbol
+at point as the default value for occur.
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(defun occur-dwim ()
+  "Call `occur' with a sane default."
+  (interactive)
+  (push (if (region-active-p)
+            (buffer-substring-no-properties
+             (region-beginning)
+             (region-end))
+          (thing-at-point 'symbol))
+        regexp-history)
+  (call-interactively 'occur))
+
+(bind-key "M-s o" 'occur-dwim)
+</pre>
+</div>
+
+<p>
+Here we make page-break characters look pretty, instead of appearing
+as <code>^L</code> in Emacs. <a href="http://ericjmritz.name/2015/08/29/using-page-breaks-in-gnu-emacs/">Here's an informative article called "Using
+Page-Breaks in GNU Emacs" by Eric J. M. Ritz.</a>
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(use-package page-break-lines
+  :ensure t)
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgheadline12" class="outline-2">
+<h2 id="orgheadline12"><span class="section-number-2">7</span> Mac customizations</h2>
+<div class="outline-text-2" id="text-7">
+<p>
+There are configurations to make when running Emacs on OS X (hence the
+"darwin" system-type check).
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(let ((is-mac (string-equal system-type "darwin")))
+  (when is-mac
+    ;; delete files by moving them to the trash
+    (setq delete-by-moving-to-trash t)
+    (setq trash-directory "~/.Trash")
+
+    ;; Don't make new frames when opening a new file with Emacs
+    (setq ns-pop-up-frames nil)
+
+    ;; set the Fn key as the hyper key
+    (setq ns-function-modifier 'hyper)
+
+    ;; Use Command-` to switch between Emacs windows (not frames)
+    (bind-key "s-`" 'other-window)
+    
+    ;; Use Command-Shift-` to switch Emacs frames in reverse
+    (bind-key "s-~" (lambda() () (interactive) (other-window -1)))
+
+    ;; Because of the keybindings above, set one for `other-frame'
+    (bind-key "s-1" 'other-frame)
+
+    ;; Fullscreen!
+    (setq ns-use-native-fullscreen nil) ; Not Lion style
+    (bind-key "&lt;s-return&gt;" 'toggle-frame-fullscreen)
+
+    ;; buffer switching
+    (bind-key "s-{" 'previous-buffer)
+    (bind-key "s-}" 'next-buffer)
+
+    ;; Compiling
+    (bind-key "H-c" 'compile)
+    (bind-key "H-r" 'recompile)
+    (bind-key "H-s" (defun save-and-recompile () (interactive) (save-buffer) (recompile)))
+
+    ;; disable the key that minimizes emacs to the dock because I don't
+    ;; minimize my windows
+    ;; (global-unset-key (kbd "C-z"))
+
+    (defun open-dir-in-finder ()
+      "Open a new Finder window to the path of the current buffer"
+      (interactive)
+      (shell-command "open ."))
+    (bind-key "s-/" 'open-dir-in-finder)
+
+    (defun open-dir-in-iterm ()
+      "Open the current directory of the buffer in iTerm."
+      (interactive)
+      (let* ((iterm-app-path "/Applications/iTerm.app")
+             (iterm-brew-path "/opt/homebrew-cask/Caskroom/iterm2/1.0.0/iTerm.app")
+             (iterm-path (if (file-directory-p iterm-app-path)
+                             iterm-app-path
+                           iterm-brew-path)))
+        (shell-command (concat "open -a " iterm-path " ."))))
+    (bind-key "s-=" 'open-dir-in-iterm)
+
+    ;; Not going to use these commands
+    (put 'ns-print-buffer 'disabled t)
+    (put 'suspend-frame 'disabled t)))
+</pre>
+</div>
+
+<p>
+<code>exec-path-from-shell</code> makes the command-line path with Emacs's shell
+match the same one on OS X.
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(use-package exec-path-from-shell
+  :if (memq window-system '(mac ns))
+  :ensure t
+  :init
+  (exec-path-from-shell-initialize))
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgheadline13" class="outline-2">
+<h2 id="orgheadline13"><span class="section-number-2">8</span> List buffers</h2>
+<div class="outline-text-2" id="text-8">
+<p>
+ibuffer is the improved version of list-buffers.
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">;; make ibuffer the default buffer lister.
+(defalias 'list-buffers 'ibuffer)
+</pre>
+</div>
+
+
+<p>
+source: <a href="http://ergoemacs.org/emacs/emacs_buffer_management.html">http://ergoemacs.org/emacs/emacs_buffer_management.html</a>
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(add-hook 'dired-mode-hook 'auto-revert-mode)
+
+;; Also auto refresh dired, but be quiet about it
+(setq global-auto-revert-non-file-buffers t)
+(setq auto-revert-verbose nil)
+</pre>
+</div>
+
+<p>
+source: <a href="http://whattheemacsd.com/sane-defaults.el-01.html">Magnars Sveen</a>
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgheadline14" class="outline-2">
+<h2 id="orgheadline14"><span class="section-number-2">9</span> Recentf</h2>
+<div class="outline-text-2" id="text-9">
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(use-package recentf
+  :commands ido-recentf-open
+  :init
+  (progn
+    (recentf-mode t)
+    (setq recentf-max-saved-items 200)
+
+    (defun ido-recentf-open ()
+      "Use `ido-completing-read' to \\[find-file] a recent file"
+      (interactive)
+      (if (find-file (ido-completing-read "Find recent file: " recentf-list))
+          (message "Opening file...")
+        (message "Aborting")))
+
+    (bind-key "C-x C-r" 'ido-recentf-open)))
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgheadline26" class="outline-2">
+<h2 id="orgheadline26"><span class="section-number-2">10</span> Org mode</h2>
+<div class="outline-text-2" id="text-10">
+<p>
+Truly the way to <a href="http://orgmode.org/">live life in plain text</a>. I mainly use it to take
+notes and save executable source blocks. I'm also starting to make use
+of its agenda, timestamping, and capturing features.
+</p>
+
+<p>
+It goes without saying that I also use it to manage my Emacs config.
+</p>
+</div>
+
+<div id="outline-container-orgheadline17" class="outline-3">
+<h3 id="orgheadline17"><span class="section-number-3">10.1</span> Org activation bindings</h3>
+<div class="outline-text-3" id="text-10-1">
+<p>
+Set up some global key bindings that integrate with Org Mode features.
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(bind-key "C-c l" 'org-store-link)
+(bind-key "C-c c" 'org-capture)
+(bind-key "C-c a" 'org-agenda)
+</pre>
+</div>
+</div>
+
+<div id="outline-container-orgheadline15" class="outline-4">
+<h4 id="orgheadline15"><span class="section-number-4">10.1.1</span> Org agenda</h4>
+<div class="outline-text-4" id="text-10-1-1">
+<p>
+Learned about <a href="https://github.com/sachac/.emacs.d/blob/83d21e473368adb1f63e582a6595450fcd0e787c/Sacha.org#org-agenda">this <code>delq</code> and <code>mapcar</code> trick from Sacha Chua's config</a>.
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(setq org-agenda-files
+      (delq nil
+            (mapcar (lambda (x) (and (file-exists-p x) x))
+                    '("~/Dropbox/Agenda"))))
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgheadline16" class="outline-4">
+<h4 id="orgheadline16"><span class="section-number-4">10.1.2</span> Org capture</h4>
+<div class="outline-text-4" id="text-10-1-2">
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(bind-key "C-c c" 'org-capture)
+(setq org-default-notes-file "~/Dropbox/Notes/notes.org")
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgheadline18" class="outline-3">
+<h3 id="orgheadline18"><span class="section-number-3">10.2</span> Org setup</h3>
+<div class="outline-text-3" id="text-10-2">
+<p>
+Speed commands are a nice and quick way to perform certain actions
+while at the beginning of a heading. It's not activated by default.
+</p>
+
+<p>
+See the doc for speed keys by checking out <a href="(info%20"(org)%20speed%20keys")">the documentation for
+speed keys in Org mode</a>.
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(setq org-use-speed-commands t)
+</pre>
+</div>
+
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(setq org-image-actual-width 550)
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgheadline19" class="outline-3">
+<h3 id="orgheadline19"><span class="section-number-3">10.3</span> Org tags</h3>
+<div class="outline-text-3" id="text-10-3">
+<p>
+The default value is -77, which is weird for smaller width windows.
+I'd rather have the tags align horizontally with the header. 45 is a
+good column number to do that.
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(setq org-tags-column 45)
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgheadline20" class="outline-3">
+<h3 id="orgheadline20"><span class="section-number-3">10.4</span> Org babel languages</h3>
+<div class="outline-text-3" id="text-10-4">
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(org-babel-do-load-languages
+ 'org-babel-load-languages
+ '((python . t)
+   (C . t)
+   (calc . t)
+   (latex . t)
+   (java . t)
+   (ruby . t)
+   (lisp . t)
+   (scheme . t)
+   (sh . t)
+   (sqlite . t)
+   (js . t)))
+
+(defun my-org-confirm-babel-evaluate (lang body)
+  "Do not confirm evaluation for these languages."
+  (not (or (string= lang "C")
+           (string= lang "java")
+           (string= lang "python")
+           (string= lang "emacs-lisp")
+           (string= lang "sqlite"))))
+(setq org-confirm-babel-evaluate 'my-org-confirm-babel-evaluate)
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgheadline21" class="outline-3">
+<h3 id="orgheadline21"><span class="section-number-3">10.5</span> Org babel/source blocks</h3>
+<div class="outline-text-3" id="text-10-5">
+<p>
+I like to have source blocks properly syntax highlighted and with the
+editing popup window staying within the same window so all the windows
+don't jump around. Also, having the top and bottom trailing lines in
+the block is a waste of space, so we can remove them.
+</p>
+
+<p>
+I noticed that fontification doesn't work with markdown mode when the
+block is indented after editing it in the org src buffer&#x2014;the leading
+#s for headers don't get fontified properly because they appear as Org
+comments. Setting <code>org-src-preserve-indentation</code> makes things
+consistent as it doesn't pad source blocks with leading spaces.
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(setq org-src-fontify-natively t
+      org-src-window-setup 'current-window
+      org-src-strip-leading-and-trailing-blank-lines t
+      org-src-preserve-indentation t
+      org-src-tab-acts-natively t)
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgheadline24" class="outline-3">
+<h3 id="orgheadline24"><span class="section-number-3">10.6</span> Org exporting</h3>
+<div class="outline-text-3" id="text-10-6">
+</div><div id="outline-container-orgheadline22" class="outline-4">
+<h4 id="orgheadline22"><span class="section-number-4">10.6.1</span> Pandoc exporter</h4>
+<div class="outline-text-4" id="text-10-6-1">
+<p>
+Pandoc converts between a huge number of different file formats. 
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(use-package ox-pandoc
+  :ensure t)
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgheadline23" class="outline-4">
+<h4 id="orgheadline23"><span class="section-number-4">10.6.2</span> org-pandoc</h4>
+<div class="outline-text-4" id="text-10-6-2">
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(use-package org-pandoc :ensure t)
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgheadline25" class="outline-3">
+<h3 id="orgheadline25"><span class="section-number-3">10.7</span> Org bullets</h3>
+<div class="outline-text-3" id="text-10-7">
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(use-package org-bullets
+ :ensure t
+ :config
+ (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1))))
+</pre>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-orgheadline27" class="outline-2">
+<h2 id="orgheadline27"><span class="section-number-2">11</span> Tramp</h2>
+<div class="outline-text-2" id="text-11">
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(use-package tramp)
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgheadline29" class="outline-2">
+<h2 id="orgheadline29"><span class="section-number-2">12</span> Locate</h2>
+<div class="outline-text-2" id="text-12">
+<p>
+Using OS X Spotlight within Emacs by modifying the <code>locate</code> function.
+</p>
+
+<p>
+I usually use <a href="#orgheadline28"><code>helm-locate</code></a>, which does live updates the spotlight
+search list as you type a query.
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">;; mdfind is the command line interface to Spotlight
+(setq locate-command "mdfind")
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgheadline30" class="outline-2">
+<h2 id="orgheadline30"><span class="section-number-2">13</span> Shell</h2>
+<div class="outline-text-2" id="text-13">
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(bind-key "C-x m" 'shell)
+(bind-key "C-x M" 'ansi-term)
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgheadline34" class="outline-2">
+<h2 id="orgheadline34"><span class="section-number-2">14</span> Window</h2>
+<div class="outline-text-2" id="text-14">
+<p>
+Convenient keybindings to resize windows.
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(bind-key "s-C-&lt;left&gt;"  'shrink-window-horizontally)
+(bind-key "s-C-&lt;right&gt;" 'enlarge-window-horizontally)
+(bind-key "s-C-&lt;down&gt;"  'shrink-window)
+(bind-key "s-C-&lt;up&gt;"    'enlarge-window)
+</pre>
+</div>
+
+<p>
+Whenever I split windows, I usually do so and also switch to the other
+window as well, so might as well rebind the splitting key bindings to
+do just that to reduce the repetition.
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(defun vsplit-other-window ()
+  "Splits the window vertically and switches to that window."
+  (interactive)
+  (split-window-vertically)
+  (other-window 1 nil))
+(defun hsplit-other-window ()
+  "Splits the window horizontally and switches to that window."
+  (interactive)
+  (split-window-horizontally)
+  (other-window 1 nil))
+
+(bind-key "C-x 2" 'vsplit-other-window)
+(bind-key "C-x 3" 'hsplit-other-window)
+</pre>
+</div>
+</div>
+<div id="outline-container-orgheadline31" class="outline-3">
+<h3 id="orgheadline31"><span class="section-number-3">14.1</span> windmove</h3>
+<div class="outline-text-3" id="text-14-1">
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(use-package windmove :ensure t)
+(windmove-default-keybindings)
+(global-set-key (kbd "C-c &lt;left&gt;")  'windmove-left)
+(global-set-key (kbd "C-c &lt;right&gt;") 'windmove-right)
+(global-set-key (kbd "C-c &lt;up&gt;")    'windmove-up)
+(global-set-key (kbd "C-c &lt;down&gt;")  'windmove-down)
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgheadline32" class="outline-3">
+<h3 id="orgheadline32"><span class="section-number-3">14.2</span> Winner mode</h3>
+<div class="outline-text-3" id="text-14-2">
+<p>
+Winner mode allows you to undo/redo changes to window changes in Emacs
+and allows you.
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(use-package winner
+  :config
+  (winner-mode t)
+  :bind (("M-s-&lt;left&gt;" . winner-undo)
+         ("M-s-&lt;right&gt;" . winner-redo)))
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgheadline33" class="outline-3">
+<h3 id="orgheadline33"><span class="section-number-3">14.3</span> Transpose frame</h3>
+<div class="outline-text-3" id="text-14-3">
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(use-package transpose-frame
+  :ensure t
+  :bind ("H-t" . transpose-frame))
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgheadline35" class="outline-2">
+<h2 id="orgheadline35"><span class="section-number-2">15</span> Ido</h2>
+<div class="outline-text-2" id="text-15">
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(use-package ido
+  :init
+  (setq ido-enable-flex-matching t)
+  (setq ido-everywhere t)
+  (setq ido-use-virtual-buffers t)
+  (ido-mode t)
+  (use-package ido-vertical-mode
+    :ensure t
+    :init (ido-vertical-mode 1)
+    (setq ido-vertical-define-keys 'C-n-and-C-p-only)))
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgheadline36" class="outline-2">
+<h2 id="orgheadline36"><span class="section-number-2">16</span> Whitespace mode</h2>
+<div class="outline-text-2" id="text-16">
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(use-package whitespace
+  :bind ("s-&lt;f10&gt;" . whitespace-mode))
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgheadline39" class="outline-2">
+<h2 id="orgheadline39"><span class="section-number-2">17</span> Google</h2>
+<div class="outline-text-2" id="text-17">
+</div><div id="outline-container-orgheadline37" class="outline-3">
+<h3 id="orgheadline37"><span class="section-number-3">17.1</span> google</h3>
+<div class="outline-text-3" id="text-17-1">
+<p>
+Emac's interface to the google api
+</p>
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(use-package google :ensure t)
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgheadline38" class="outline-3">
+<h3 id="orgheadline38"><span class="section-number-3">17.2</span> google this</h3>
+<div class="outline-text-3" id="text-17-2">
+<p>
+a set of functions and bindinga to google underpoint
+</p>
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(use-package google-this :ensure t)
+</pre>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-orgheadline91" class="outline-2">
+<h2 id="orgheadline91"><span class="section-number-2">18</span> ELPA packages</h2>
+<div class="outline-text-2" id="text-18">
+<p>
+These are the packages that are not built into Emacs.
+</p>
+</div>
+
+<div id="outline-container-orgheadline40" class="outline-3">
+<h3 id="orgheadline40"><span class="section-number-3">18.1</span> Ace Jump Mode</h3>
+<div class="outline-text-3" id="text-18-1">
+<p>
+A quick way to jump around text in buffers.
+</p>
+
+<p>
+<a href="http://emacsrocks.com/e10.html">See Emacs Rocks Episode 10 for a screencast.</a>
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(use-package ace-jump-mode
+  :ensure t
+  :diminish ace-jump-mode
+  :commands ace-jump-mode
+  :bind ("C-S-s" . ace-jump-mode))
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgheadline41" class="outline-3">
+<h3 id="orgheadline41"><span class="section-number-3">18.2</span> avy</h3>
+<div class="outline-text-3" id="text-18-2">
+<p>
+Replacing ace-window
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(use-package avy :ensure t)
+(global-set-key (kbd "C-c j") 'avy-goto-word-or-subword-1)
+(global-set-key (kbd "s-.") 'avy-goto-word-or-subword-1)
+(global-set-key (kbd "s-w") 'ace-window)
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgheadline42" class="outline-3">
+<h3 id="orgheadline42"><span class="section-number-3">18.3</span> Ace Window</h3>
+<div class="outline-text-3" id="text-18-3">
+<p>
+<a href="https://github.com/abo-abo/ace-window">ace-window</a> is a package that uses the same idea from ace-jump-mode for
+buffer navigation, but applies it to windows. The default keys are
+1-9, but it's faster to access the keys on the home row, so that's
+what I have them set to (with respect to Dvorak, of course).
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(use-package ace-window
+  :ensure t
+  :config
+  (setq aw-keys '(?a ?o ?e ?u ?h ?t ?n ?s))
+  (ace-window-display-mode)
+  :bind ("s-o" . ace-window))
+</pre>
+</div>
+<p>
+#+end<sub>src</sub>
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgheadline43" class="outline-3">
+<h3 id="orgheadline43"><span class="section-number-3">18.4</span> Android mode</h3>
+<div class="outline-text-3" id="text-18-4">
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(use-package android-mode
+  :ensure t)
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgheadline44" class="outline-3">
+<h3 id="orgheadline44"><span class="section-number-3">18.5</span> C-Eldoc</h3>
+<div class="outline-text-3" id="text-18-5">
+<p>
+This package displays function signatures in the mode line.
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(use-package c-eldoc
+  :commands c-turn-on-eldoc-mode
+  :ensure t
+  :init (add-hook 'c-mode-hook #'c-turn-on-eldoc-mode))
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgheadline45" class="outline-3">
+<h3 id="orgheadline45"><span class="section-number-3">18.6</span> Clojure</h3>
+<div class="outline-text-3" id="text-18-6">
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(use-package clojure-mode
+  :ensure t)
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgheadline46" class="outline-3">
+<h3 id="orgheadline46"><span class="section-number-3">18.7</span> Dash</h3>
+<div class="outline-text-3" id="text-18-7">
+<p>
+Integration with <a href="http://kapeli.com/dash">Dash, the API documentation browser on OS X</a>. The
+binding <code>s-D</code> is the same as Cmd-Shift-D, the same binding that dash
+uses in Android Studio (trying to keep things consistent with the
+tools I use).
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(use-package dash-at-point
+  :ensure t
+  :bind (("s-D"     . dash-at-point)
+         ("C-c e"   . dash-at-point-with-docset)))
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgheadline47" class="outline-3">
+<h3 id="orgheadline47"><span class="section-number-3">18.8</span> Highligh line</h3>
+<div class="outline-text-3" id="text-18-8">
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(use-package highlight-current-line :ensure t)
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgheadline28" class="outline-3">
+<h3 id="orgheadline28"><span class="section-number-3">18.9</span> Helm</h3>
+<div class="outline-text-3" id="text-18-9">
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(use-package helm
+  :ensure t
+  :diminish helm-mode
+  :init (progn
+          (require 'helm-config)
+          (use-package helm-projectile
+            :ensure t
+            :commands helm-projectile
+            :bind ("C-c p h" . helm-projectile))
+          (use-package helm-ag :defer 10  :ensure t)
+          (setq helm-locate-command "mdfind -interpret -name %s %s"
+                helm-ff-newfile-prompt-p nil
+                helm-M-x-fuzzy-match t)
+          (helm-mode)
+          (use-package helm-swoop :ensure t :bind ("M-i" . helm-swoop)))
+  :bind (("C-c h" . helm-command-prefix)
+         ("C-x b" . helm-mini)
+         ("C-`" . helm-resume)
+         ("M-x" . helm-M-x)
+         ("C-x C-f" . helm-find-files)
+         ("M-y" . helm-show-kill-ring)))
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgheadline49" class="outline-3">
+<h3 id="orgheadline49"><span class="section-number-3">18.10</span> Magit</h3>
+<div class="outline-text-3" id="text-18-10">
+<p>
+A great interface for git projects. It's much more pleasant to use
+than the git interface on the command line. Use an easy keybinding to
+access magit.
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(use-package magit
+  :ensure t
+  :bind ("C-c g" . magit-status)
+  :config
+ (define-key magit-status-mode-map (kbd "q") 'magit-quit-session))
+</pre>
+</div>
+</div>
+
+<div id="outline-container-orgheadline48" class="outline-4">
+<h4 id="orgheadline48"><span class="section-number-4">18.10.1</span> Fullscreen magit</h4>
+<div class="outline-text-4" id="text-18-10-1">
+<blockquote>
+<p>
+The following code makes magit-status run alone in the frame, and then
+restores the old window configuration when you quit out of magit.
+</p>
+
+<p>
+No more juggling windows after commiting. It's magit bliss.
+</p>
+</blockquote>
+<p>
+<a href="http://whattheemacsd.com/setup-magit.el-01.html">Source: Magnar Sveen</a>
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">;; full screen magit-status
+(defadvice magit-status (around magit-fullscreen activate)
+  (window-configuration-to-register :magit-fullscreen)
+  ad-do-it
+  (delete-other-windows))
+
+(defun magit-quit-session ()
+  "Restores the previous window configuration and kills the magit buffer"
+  (interactive)
+  (kill-buffer)
+  (jump-to-register :magit-fullscreen))
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgheadline50" class="outline-3">
+<h3 id="orgheadline50"><span class="section-number-3">18.11</span> Edit With Emacs</h3>
+<div class="outline-text-3" id="text-18-11">
+<p>
+Editing input boxes from Chrome with Emacs. Pretty useful to keep all
+significant text-writing on the web within emacs. I typically use this
+with posts on Discourse, which has a post editor that overrides normal
+Emacs key bindings with other functions. As such, <code>markdown-mode</code> is
+used.
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(use-package edit-server
+  :ensure t
+  :config
+  (edit-server-start)
+  (setq edit-server-default-major-mode 'markdown-mode)
+  (setq edit-server-new-frame nil))
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgheadline51" class="outline-3">
+<h3 id="orgheadline51"><span class="section-number-3">18.12</span> Elfeed</h3>
+<div class="outline-text-3" id="text-18-12">
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(use-package elfeed
+  :ensure t
+  :config (setq elfeed-feeds
+                '("http://feeds.feedburner.com/gonintendo/news"
+                  "http://usesthis.com/feed/")))
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgheadline52" class="outline-3">
+<h3 id="orgheadline52"><span class="section-number-3">18.13</span> Emacs IPython Notebook</h3>
+<div class="outline-text-3" id="text-18-13">
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(use-package ein
+  :ensure t)
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgheadline53" class="outline-3">
+<h3 id="orgheadline53"><span class="section-number-3">18.14</span> Expand region</h3>
+<div class="outline-text-3" id="text-18-14">
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(use-package expand-region
+  :ensure t
+  :bind ("C-@" . er/expand-region))
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgheadline54" class="outline-3">
+<h3 id="orgheadline54"><span class="section-number-3">18.15</span> Floobits</h3>
+<div class="outline-text-3" id="text-18-15">
+<p>
+Using <a href="https://floobits.com/">Floobits</a> for code collaboration.
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(use-package floobits
+  :ensure t)
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgheadline56" class="outline-3">
+<h3 id="orgheadline56"><span class="section-number-3">18.16</span> Flycheck</h3>
+<div class="outline-text-3" id="text-18-16">
+<p>
+Still need to set up hooks so that flycheck automatically runs in
+python mode, etc. js2-mode is already really good for the syntax
+checks, so I probably don't need the jshint checks with flycheck for
+it.
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(use-package flycheck
+  :ensure t
+  :defer 10
+  :config (global-flycheck-mode t) 
+          (setq flycheck-html-tidy-executable "tidy5"))
+</pre>
+</div>
+</div>
+
+<div id="outline-container-orgheadline55" class="outline-4">
+<h4 id="orgheadline55"><span class="section-number-4">18.16.1</span> Linter setups</h4>
+<div class="outline-text-4" id="text-18-16-1">
+<p>
+Install the HTML5/CSS/JavaScript linters.
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-sh">brew tap homebrew/dupes
+brew install tidy
+npm install -g jshint
+npm install -g csslint
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgheadline57" class="outline-3">
+<h3 id="orgheadline57"><span class="section-number-3">18.17</span> Guiding line</h3>
+<div class="outline-text-3" id="text-18-17">
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">;; (use-package 'indent-guide 
+;;           :ensure t
+;;           :config (indent-guide-global-mode))
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgheadline58" class="outline-3">
+<h3 id="orgheadline58"><span class="section-number-3">18.18</span> Gists</h3>
+<div class="outline-text-3" id="text-18-18">
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(use-package gist
+  :ensure t
+  :commands gist-list)
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgheadline59" class="outline-3">
+<h3 id="orgheadline59"><span class="section-number-3">18.19</span> Macrostep</h3>
+<div class="outline-text-3" id="text-18-19">
+<p>
+Macrostep allows you to see what Elisp macros expand to. Learned about
+it from the <a href="https://www.youtube.com/watch?v=2TSKxxYEbII">package highlight talk for use-package</a>.
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(use-package macrostep
+  :ensure t
+  :bind ("H-`" . macrostep-expand))
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgheadline60" class="outline-3">
+<h3 id="orgheadline60"><span class="section-number-3">18.20</span> Markdown mode</h3>
+<div class="outline-text-3" id="text-18-20">
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(use-package markdown-mode
+  :ensure t
+  :mode (("\\.markdown\\'" . markdown-mode)
+         ("\\.md\\'"       . markdown-mode))
+         ("\\.jsx\\'" . js2-jsx-mode))
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgheadline61" class="outline-3">
+<h3 id="orgheadline61"><span class="section-number-3">18.21</span> Multiple cursors</h3>
+<div class="outline-text-3" id="text-18-21">
+<p>
+We'll also need to <code>(require 'multiple-cusors)</code> because of <a href="https://github.com/magnars/multiple-cursors.el/issues/105">an autoload issue</a>.
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(use-package multiple-cursors
+  :ensure t
+  :bind (("C-S-c C-S-c" . mc/edit-lines)
+         ("C-&gt;"         . mc/mark-next-like-this)
+         ("C-&lt;"         . mc/mark-previous-like-this)
+         ("C-c C-&lt;"     . mc/mark-all-like-this)
+         ("C-!"         . mc/mark-next-symbol-like-this)
+         ("s-d"         . mc/mark-all-dwim)))
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgheadline62" class="outline-3">
+<h3 id="orgheadline62"><span class="section-number-3">18.22</span> Olivetti</h3>
+<div class="outline-text-3" id="text-18-22">
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(use-package olivetti
+  :ensure t
+  :bind ("s-&lt;f6&gt;" . olivetti-mode))
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgheadline63" class="outline-3">
+<h3 id="orgheadline63"><span class="section-number-3">18.23</span> Perspective</h3>
+<div class="outline-text-3" id="text-18-23">
+<p>
+Workspaces in Emacs.
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(use-package perspective
+  :ensure t
+  :config (persp-mode))
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgheadline64" class="outline-3">
+<h3 id="orgheadline64"><span class="section-number-3">18.24</span> Projectile</h3>
+<div class="outline-text-3" id="text-18-24">
+<blockquote>
+<p>
+Project navigation and management library for Emacs.
+</p>
+</blockquote>
+<p>
+<a href="http://batsov.com/projectile/">http://batsov.com/projectile/</a>
+</p>
+
+
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(use-package projectile
+  :ensure t
+  :diminish projectile-mode
+  :commands projectile-mode
+  :config
+  (progn
+    (projectile-global-mode t)
+    (setq projectile-enable-caching t)
+    (use-package ag
+      :commands ag
+      :ensure t)))
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgheadline65" class="outline-3">
+<h3 id="orgheadline65"><span class="section-number-3">18.25</span> Python</h3>
+<div class="outline-text-3" id="text-18-25">
+<p>
+Integrates with IPython.
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(use-package python-mode
+  :ensure t)
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgheadline66" class="outline-3">
+<h3 id="orgheadline66"><span class="section-number-3">18.26</span> Racket</h3>
+<div class="outline-text-3" id="text-18-26">
+<p>
+Starting to use Racket now, mainly for programming paradigms class,
+though I'm looking forward to some "REPL-driven development" whenever
+I get the chance.
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(use-package racket-mode
+  :ensure t
+  :commands racket-mode
+  :config
+  (setq racket-smart-open-bracket-enable t))
+
+(use-package geiser
+  :ensure t
+  :config
+  (setq geiser-default-implementation '(racket)))
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgheadline67" class="outline-3">
+<h3 id="orgheadline67"><span class="section-number-3">18.27</span> Restclient</h3>
+<div class="outline-text-3" id="text-18-27">
+<p>
+See <a href="http://emacsrocks.com/e15.html">Emacs Rocks! Episode 15</a> to learn how restclient can help out with
+testing APIs from within Emacs. The HTTP calls you make in the buffer
+aren't constrainted within Emacs; there's the
+<code>restclient-copy-curl-command</code> to get the equivalent <code>curl</code> call
+string to keep things portable.
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(use-package restclient
+  :ensure t
+  :mode ("\\.restclient\\'" . restclient-mode))
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgheadline68" class="outline-3">
+<h3 id="orgheadline68"><span class="section-number-3">18.28</span> Smartparens mode</h3>
+<div class="outline-text-3" id="text-18-28">
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(use-package smartparens
+  :ensure t
+  :diminish smartparens-mode
+  :config
+  (add-to-list 'sp--lisp-modes 'racket-mode)
+  (add-to-list 'sp--lisp-modes 'geiser-mode)
+  (require 'smartparens-config)
+  (smartparens-global-mode t))
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgheadline69" class="outline-3">
+<h3 id="orgheadline69"><span class="section-number-3">18.29</span> Smartparens org mode</h3>
+<div class="outline-text-3" id="text-18-29">
+<p>
+Set up some pairings for org mode markup. These pairings won't
+activate by default; they'll only apply for wrapping regions.
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(sp-local-pair 'org-mode "~" "~" :actions '(wrap))
+(sp-local-pair 'org-mode "/" "/" :actions '(wrap))
+(sp-local-pair 'org-mode "*" "*" :actions '(wrap))
+(add-hook 'js-mode-hook #'smartparens-mode)
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgheadline70" class="outline-3">
+<h3 id="orgheadline70"><span class="section-number-3">18.30</span> Smartscan</h3>
+<div class="outline-text-3" id="text-18-30">
+<blockquote>
+<p>
+Quickly jumps between other symbols found at point in Emacs.
+</p>
+</blockquote>
+<p>
+<a href="http://www.masteringemacs.org/article/smart-scan-jump-symbols-buffer">http://www.masteringemacs.org/article/smart-scan-jump-symbols-buffer</a>
+</p>
+
+
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(use-package smartscan
+  :ensure t
+  :config (global-smartscan-mode 1)
+  :bind (("s-n" . smartscan-symbol-go-forward)
+         ("s-p" . smartscan-symbol-go-backward)))
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgheadline71" class="outline-3">
+<h3 id="orgheadline71"><span class="section-number-3">18.31</span> Smex</h3>
+<div class="outline-text-3" id="text-18-31">
+<p>
+Smex integrates ido with <code>M-x</code>. I used to use this before moving on to
+<a href="#orgheadline28">helm</a>.
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(use-package smex
+  :if (not (featurep 'helm-mode))
+  :ensure t
+  :bind ("M-x" . smex))
+(setq smex-save-file (expand-file-name ".smex-items" user-emacs-directory))
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgheadline72" class="outline-3">
+<h3 id="orgheadline72"><span class="section-number-3">18.32</span> Aggressive indent</h3>
+<div class="outline-text-3" id="text-18-32">
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(use-package aggressive-indent
+    :ensure t)
+(global-aggressive-indent-mode 1)
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgheadline73" class="outline-3">
+<h3 id="orgheadline73"><span class="section-number-3">18.33</span> Skewer mode</h3>
+<div class="outline-text-3" id="text-18-33">
+<p>
+Live coding for HTML/CSS/JavaScript.
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(use-package skewer-mode
+  :commands skewer-mode
+  :ensure t
+  :config (skewer-setup))
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgheadline74" class="outline-3">
+<h3 id="orgheadline74"><span class="section-number-3">18.34</span> Smoothscrolling</h3>
+<div class="outline-text-3" id="text-18-34">
+<p>
+This makes it so <code>C-n</code>-ing and <code>C-p</code>-ing won't make the buffer jump
+around so much.
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(use-package smooth-scrolling
+  :ensure t)
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgheadline75" class="outline-3">
+<h3 id="orgheadline75"><span class="section-number-3">18.35</span> Typescript mode</h3>
+<div class="outline-text-3" id="text-18-35">
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(use-package typescript-mode
+  :ensure t)
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgheadline76" class="outline-3">
+<h3 id="orgheadline76"><span class="section-number-3">18.36</span> Visual-regexp</h3>
+<div class="outline-text-3" id="text-18-36">
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(use-package visual-regexp
+  :ensure t
+  :init
+  (use-package visual-regexp-steroids :ensure t)
+  :bind (("C-c r" . vr/replace)
+         ("C-c q" . vr/query-replace)
+         ("C-c m" . vr/mc-mark) ; Need multiple cursors
+         ("C-M-r" . vr/isearch-backward)
+         ("C-M-s" . vr/isearch-forward)))
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgheadline77" class="outline-3">
+<h3 id="orgheadline77"><span class="section-number-3">18.37</span> Webmode</h3>
+<div class="outline-text-3" id="text-18-37">
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(use-package web-mode
+  :ensure t
+  :mode (("\\.js\\'" . web-mode)
+         ("\\.js\\'"       . js2-jsx-mode)
+         ("\\.html\\'" . web-mode)
+         ("\\.html\\.erb\\'" . web-mode)
+         ("\\.mustache\\'" . web-mode)
+         ("\\.jinja\\'" . web-mode)
+         ("\\.php\\'" . web-mode))
+  :config
+  (progn
+    (setq web-mode-engines-alist
+          '(("\\.jinja\\'"  . "django")))))
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgheadline78" class="outline-3">
+<h3 id="orgheadline78"><span class="section-number-3">18.38</span> Yasnippet</h3>
+<div class="outline-text-3" id="text-18-38">
+<p>
+Yeah, snippets! I start with snippets from <a href="https://github.com/AndreaCrotti/yasnippet-snippets">Andrea Crotti's collection</a>
+and have also modified them and added my own.
+</p>
+
+<p>
+It takes a few seconds to load and I don't need them immediately when
+Emacs starts up, so we can defer loading yasnippet until there's some
+idle time.
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(use-package yasnippet
+  :ensure t
+  :defer 10
+  :diminish yas-minor-mode
+  :config
+  (setq yas-snippet-dirs (concat user-emacs-directory "snippets"))
+  (yas-global-mode))
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgheadline79" class="outline-3">
+<h3 id="orgheadline79"><span class="section-number-3">18.39</span> Emmet</h3>
+<div class="outline-text-3" id="text-18-39">
+<p>
+According to <a href="http://emmet.io/">their website</a>, "Emmet — the essential toolkit for web-developers."
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(use-package emmet-mode
+  :ensure t
+  :commands emmet-mode
+  :config
+  (add-hook 'html-mode-hook 'emmet-mode)
+  (add-hook 'css-mode-hook 'emmet-mode))
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgheadline80" class="outline-3">
+<h3 id="orgheadline80"><span class="section-number-3">18.40</span> Zoom-frm</h3>
+<div class="outline-text-3" id="text-18-40">
+<p>
+<code>zoom-frm</code> is a nice package that allows you to resize the text of
+entire Emacs frames (this includes text in the buffer, mode line, and
+minibuffer). The <code>zoom-in/out</code> command acts similar to the
+<code>text-scale-adjust</code> command&#x2014;you can chain zooming in, out, or
+resetting to the default size once the command has been initially
+called.
+</p>
+
+<p>
+Changing the <code>frame-zoom-font-difference</code> essentially enables a
+"presentation mode" when calling <code>toggle-zoom-frame</code>.
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(use-package zoom-frm
+  :ensure t
+  :bind (("C-M-=" . zoom-in/out)
+         ("H-z"   . toggle-zoom-frame))
+  :config
+  (setq frame-zoom-font-difference 10))
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgheadline81" class="outline-3">
+<h3 id="orgheadline81"><span class="section-number-3">18.41</span> Scratch</h3>
+<div class="outline-text-3" id="text-18-41">
+<p>
+Convenient package to create <code>*scratch*</code> buffers that are based on the
+current buffer's major mode. This is more convienent than manually
+creating a buffer to do some scratch work or reusing the initial
+<code>*scratch*</code> buffer.
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(use-package scratch
+  :ensure t)
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgheadline82" class="outline-3">
+<h3 id="orgheadline82"><span class="section-number-3">18.42</span> Shell pop</h3>
+<div class="outline-text-3" id="text-18-42">
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(use-package shell-pop
+  :ensure t
+  :bind ("M-&lt;f12&gt;" . shell-pop))
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgheadline83" class="outline-3">
+<h3 id="orgheadline83"><span class="section-number-3">18.43</span> SLIME</h3>
+<div class="outline-text-3" id="text-18-43">
+<p>
+The Superior Lisp Interaction Mode for Emacs. First, Install SBCL with
+brew.
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-sh">brew install sbcl
+</pre>
+</div>
+
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(use-package slime
+  :ensure t
+  :init
+  (setq inferior-lisp-program "/usr/local/bin/sbcl")
+  (add-to-list 'slime-contribs 'slime-fancy))
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgheadline84" class="outline-3">
+<h3 id="orgheadline84"><span class="section-number-3">18.44</span> Quickrun</h3>
+<div class="outline-text-3" id="text-18-44">
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(use-package quickrun
+  :defer 10
+  :ensure t
+  :bind ("H-q" . quickrun))
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgheadline85" class="outline-3">
+<h3 id="orgheadline85"><span class="section-number-3">18.45</span> Visible mode</h3>
+<div class="outline-text-3" id="text-18-45">
+<p>
+I found out about this mode my looking through simple.el. I use it to
+see raw org-mode files without going to a different mode like
+text-mode, which is what I had done in order to see invisible text
+(with org hyperlinks). The entire buffer contents will be visible
+while still being in org mode.
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(use-package visible-mode
+  :bind ("H-v" . visible-mode))
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgheadline86" class="outline-3">
+<h3 id="orgheadline86"><span class="section-number-3">18.46</span> Virtualenvwrapper</h3>
+<div class="outline-text-3" id="text-18-46">
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(use-package virtualenvwrapper
+  :ensure t
+  :config
+  (setq venv-location "~/.virtualenvs"))
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgheadline87" class="outline-3">
+<h3 id="orgheadline87"><span class="section-number-3">18.47</span> XQuery mode</h3>
+<div class="outline-text-3" id="text-18-47">
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(use-package xquery-mode
+  :ensure t)
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgheadline88" class="outline-3">
+<h3 id="orgheadline88"><span class="section-number-3">18.48</span> LaTeX Extra</h3>
+<div class="outline-text-3" id="text-18-48">
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(use-package latex-extra
+  :ensure t)
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgheadline89" class="outline-3">
+<h3 id="orgheadline89"><span class="section-number-3">18.49</span> LaTeX Preview Mode</h3>
+<div class="outline-text-3" id="text-18-49">
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(use-package latex-preview-pane
+  :ensure t)
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgheadline90" class="outline-3">
+<h3 id="orgheadline90"><span class="section-number-3">18.50</span> Undo Tree</h3>
+<div class="outline-text-3" id="text-18-50">
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(use-package undo-tree
+  :ensure t)
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgheadline92" class="outline-2">
+<h2 id="orgheadline92"><span class="section-number-2">19</span> Computer-specific settings</h2>
+</div>
+<div id="outline-container-orgheadline109" class="outline-2">
+<h2 id="orgheadline109"><span class="section-number-2">20</span> Languages</h2>
+<div class="outline-text-2" id="text-20">
+</div><div id="outline-container-orgheadline93" class="outline-3">
+<h3 id="orgheadline93"><span class="section-number-3">20.1</span> C/Java</h3>
+<div class="outline-text-3" id="text-20-1">
+<p>
+I don't like the default way that Emacs handles indentation. For instance,
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-C">int main(int argc, char *argv[])
+{
+  /* What's with the brace alignment? */
+  if (check)
+    {
+    }
+  return 0;
+}
+</pre>
+</div>
+
+<div class="org-src-container">
+
+<pre class="src src-java">switch (number)
+    {
+    case 1:
+        doStuff();
+        break;
+    case 2:
+        doStuff();
+        break;
+    default:
+        break;
+    }
+</pre>
+</div>
+
+<p>
+Luckily, I can modify the way Emacs formats code with this configuration.
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(defun my-c-mode-hook ()
+  (setq c-basic-offset 4)
+  (c-set-offset 'substatement-open 0)   ; Curly braces alignment
+  (c-set-offset 'case-label 4))         ; Switch case statements alignment
+
+(add-hook 'c-mode-hook 'my-c-mode-hook)
+(add-hook 'java-mode-hook 'my-c-mode-hook)
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgheadline96" class="outline-3">
+<h3 id="orgheadline96"><span class="section-number-3">20.2</span> Haskell</h3>
+<div class="outline-text-3" id="text-20-2">
+<p>
+From <a href="https://github.com/serras/emacs-haskell-tutorial/blob/master/tutorial.md">haskell for emacs</a>
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(use-package haskell-mode 
+      :ensure t)
+(define-key haskell-mode-map [f8] 'haskell-navigate-imports)
+
+;;enabling hasktags
+(let ((my-cabal-path (expand-file-name "~/.cabal/bin")))
+  (setenv "PATH" (concat my-cabal-path path-separator (getenv "PATH")))
+  (add-to-list 'exec-path my-cabal-path))
+(custom-set-variables '(haskell-tags-on-save t))
+
+;; Key bindings from the wiki
+(custom-set-variables
+  '(haskell-process-suggest-remove-import-lines t)
+  '(haskell-process-auto-import-loaded-modules t)
+  '(haskell-process-type 'cabal-repl)
+  '(haskell-process-log t))
+(eval-after-load 'haskell-mode '(progn
+  (define-key haskell-mode-map (kbd "C-c C-l") 'haskell-process-load-or-reload)
+  (define-key haskell-mode-map (kbd "C-c C-z") 'haskell-interactive-switch)
+  (define-key haskell-mode-map (kbd "C-c C-n C-t") 'haskell-process-do-type)
+  (define-key haskell-mode-map (kbd "C-c C-n C-i") 'haskell-process-do-info)
+  (define-key haskell-mode-map (kbd "C-c C-n C-c") 'haskell-process-cabal-build)
+  (define-key haskell-mode-map (kbd "C-c C-n c") 'haskell-process-cabal)
+  (define-key haskell-mode-map (kbd "SPC") 'haskell-mode-contextual-space)))
+(eval-after-load 'haskell-cabal '(progn
+  (define-key haskell-cabal-mode-map (kbd "C-c C-z") 'haskell-interactive-switch)
+  (define-key haskell-cabal-mode-map (kbd "C-c C-k") 'haskell-interactive-mode-clear)
+  (define-key haskell-cabal-mode-map (kbd "C-c C-c") 'haskell-process-cabal-build)
+  (define-key haskell-cabal-mode-map (kbd "C-c c") 'haskell-process-cabal)))
+</pre>
+</div>
+</div>
+
+<div id="outline-container-orgheadline94" class="outline-4">
+<h4 id="orgheadline94"><span class="section-number-4">20.2.1</span> Hindent</h4>
+<div class="outline-text-4" id="text-20-2-1">
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(use-package hindent
+     :ensure t)
+(add-hook 'haskell-mode-hook #'hindent-mode)
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgheadline95" class="outline-4">
+<h4 id="orgheadline95"><span class="section-number-4">20.2.2</span> ghc</h4>
+<div class="outline-text-4" id="text-20-2-2">
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(use-package ghc :ensure t)
+(autoload 'ghc-init "ghc" nil t)
+(autoload 'ghc-debug "ghc" nil t)
+(add-hook 'haskell-mode-hook (lambda () (ghc-init)))
+</pre>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-orgheadline97" class="outline-3">
+<h3 id="orgheadline97"><span class="section-number-3">20.3</span> Jasmin</h3>
+<div class="outline-text-3" id="text-20-3">
+<p>
+Mode for editing Jasmin Java bytecode assembler files.
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(use-package jasmin)
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgheadline98" class="outline-3">
+<h3 id="orgheadline98"><span class="section-number-3">20.4</span> Rust</h3>
+<div class="outline-text-3" id="text-20-4">
+<p>
+#+BEGIN<sub>SRC</sub> emacs-lisp
+(use-package rust-mode
+  :ensure t)
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgheadline108" class="outline-3">
+<h3 id="orgheadline108"><span class="section-number-3">20.5</span> Wed Dev</h3>
+<div class="outline-text-3" id="text-20-5">
+</div><div id="outline-container-orgheadline99" class="outline-4">
+<h4 id="orgheadline99"><span class="section-number-4">20.5.1</span> Angular</h4>
+<div class="outline-text-4" id="text-20-5-1">
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(use-package angular-mode :ensure t)
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgheadline100" class="outline-4">
+<h4 id="orgheadline100"><span class="section-number-4">20.5.2</span> company mode</h4>
+<div class="outline-text-4" id="text-20-5-2">
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(use-package company
+     :ensure t)
+(add-hook 'after-init-hook 'global-company-mode)
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgheadline101" class="outline-4">
+<h4 id="orgheadline101"><span class="section-number-4">20.5.3</span> company-web</h4>
+<div class="outline-text-4" id="text-20-5-3">
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(use-package company-web :ensure t)
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgheadline102" class="outline-4">
+<h4 id="orgheadline102"><span class="section-number-4">20.5.4</span> company ghc</h4>
+<div class="outline-text-4" id="text-20-5-4">
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(use-package company-ghc :ensure t)
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgheadline103" class="outline-4">
+<h4 id="orgheadline103"><span class="section-number-4">20.5.5</span> auto-pair</h4>
+<div class="outline-text-4" id="text-20-5-5">
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(use-package autopair :ensure t)
+;;;(autopair-global-mode 1)
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgheadline107" class="outline-4">
+<h4 id="orgheadline107"><span class="section-number-4">20.5.6</span> Ac's</h4>
+<div class="outline-text-4" id="text-20-5-6">
+</div><ol class="org-ol"><li><a id="orgheadline104"></a>ac-html<br  /><div class="outline-text-5" id="text-20-5-6-1">
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(use-package ac-html :ensure t)
+</pre>
+</div>
+</div></li>
+<li><a id="orgheadline105"></a>ac-html-angular<br  /><div class="outline-text-5" id="text-20-5-6-2">
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(use-package ac-html-angular :ensure t)
+</pre>
+</div>
+</div></li>
+<li><a id="orgheadline106"></a>ac-html-csswatcher<br  /><div class="outline-text-5" id="text-20-5-6-3">
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(use-package ac-html-csswatcher :ensure t)
+</pre>
+</div>
+</div></li></ol>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgheadline117" class="outline-2">
+<h2 id="orgheadline117"><span class="section-number-2">21</span> Misc</h2>
+<div class="outline-text-2" id="text-21">
+</div><div id="outline-container-orgheadline110" class="outline-3">
+<h3 id="orgheadline110"><span class="section-number-3">21.1</span> Display Time</h3>
+<div class="outline-text-3" id="text-21-1">
+<p>
+When displaying the time with <code>display-time-mode</code>, I don't care about
+the load average.
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(setq display-time-default-load-average nil)
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgheadline111" class="outline-3">
+<h3 id="orgheadline111"><span class="section-number-3">21.2</span> Display Battery Mode</h3>
+<div class="outline-text-3" id="text-21-2">
+<p>
+See the documentation for <code>battery-mode-line-format</code> for the format
+characters.
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(setq battery-mode-line-format "[%b%p%% %t]")
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgheadline112" class="outline-3">
+<h3 id="orgheadline112"><span class="section-number-3">21.3</span> Docview keybindings</h3>
+<div class="outline-text-3" id="text-21-3">
+<p>
+Convenience bindings to use doc-view with the arrow keys.
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(use-package doc-view
+  :commands doc-view-mode
+  :config
+  (define-key doc-view-mode-map (kbd "&lt;right&gt;") 'doc-view-next-page)
+  (define-key doc-view-mode-map (kbd "&lt;left&gt;") 'doc-view-previous-page))
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgheadline113" class="outline-3">
+<h3 id="orgheadline113"><span class="section-number-3">21.4</span> OS X scrolling</h3>
+<div class="outline-text-3" id="text-21-4">
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(setq mouse-wheel-scroll-amount (quote (0.01)))
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgheadline114" class="outline-3">
+<h3 id="orgheadline114"><span class="section-number-3">21.5</span> Emacsclient</h3>
+<div class="outline-text-3" id="text-21-5">
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(use-package server
+  :config
+  (server-start))
+</pre>
+</div>
+
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(use-package visible-mode
+  :bind ("H-v" . visible-mode))
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgheadline115" class="outline-3">
+<h3 id="orgheadline115"><span class="section-number-3">21.6</span> Cl-library</h3>
+<div class="outline-text-3" id="text-21-6">
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(use-package cl-lib :ensure t)
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgheadline116" class="outline-3">
+<h3 id="orgheadline116"><span class="section-number-3">21.7</span> Hash Keybind</h3>
+<div class="outline-text-3" id="text-21-7">
+<p>
+Allow the hash key to be entered
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(global-set-key (kbd "M-3") '(lambda () (interactive) (insert "#")))
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: Fernando</p>
+<p class="date">Created: 2016-03-01 Tue 12:09</p>
+<p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>

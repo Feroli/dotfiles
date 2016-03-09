@@ -1,0 +1,41 @@
+#+TITLE: Dotfiles Configurations
+#+AUTHOR: Fernando
+
+* Shell
+
+This repository does not contain the files .bash_profile or .zshrc as they merely link to the [[file:bashrc][bashrc]] and [[file:zshrc][zshrc]].
+
+This repository is focused mainly on the zsh shell and uses the [[https://github.com/robbyrussell/oh-my-zsh][oh-my-zsh]] framework.
+
+To link your .bash_profile or .zshrc just add the following:
+
+
+** .zshrc
+#+NAME: .zshrc
+#+BEGIN_SRC sh
+. ~/bin/dotfiles/zshrc
+#+END_SRC
+
+** .bashrc
+#+NAME: .bashrc
+#+BEGIN_SRC sh
+. ~/bin/dotfiles/bashrc
+#+END_SRC
+
+** .bash_profile
+#+NAME: .bash_profile
+#+BEGIN_SRC sh
+if [-f ~/.bashrc];
+then
+    source ~/.bashrc
+fi
+#+END_SRC
+
+* Emacs
+
+The configuration depends on Org mode. [[file:.emacs.d/init.el][init.el]] sets up a few initial GUI settings, bootstraps [[https://github.com/jwiegley/use-package][use-package]], and loads [[file:.emacs.d/config.org][config.org]], which is where the majority of the configuration magic happens.
+
+For more information see [[file:.emacs.d/config.org][config.org]], it contains installation and more details about the configurations.
+* Spacemacs
+
+Standard initialisation files are included in this repository. For installation procedure see the [[file:spacemacs/configSpace.org][configSpace.org]] file

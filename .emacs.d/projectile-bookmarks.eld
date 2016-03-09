@@ -1,0 +1,1 @@
+("~/.emacs.d/" "~/Haskell/" "~/notes/kcl/" "~/projrunw/")
