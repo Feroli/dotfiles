@@ -1,1 +1,1 @@
-("~/.emacs.d/" "~/Haskell/" "~/notes/kcl/" "~/projrunw/")
+("~/bin/dotfiles/" "~/notes/kcl/Year2/" "~/notes/kcl/" "~/Downloads/Informatics_Final_Report_Template 2/" "~/.emacs.d/" "~/Haskell/" "~/projrunw/")

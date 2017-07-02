@@ -1,5 +1,6 @@
 alias sudo='sudo '
 # Finder
+alias oa='open -a'
 alias o='open . &'
 alias of='open -a Firefox'
 alias os='open -a safari'
@@ -21,6 +22,7 @@ alias cdd='cd -'
 alias cdbz='cd ~/bin/dotfiles/zsh'
 alias cds='cd ~/sites'
 alias cdr='pwd | pbcopy'
+alias syscon='cd /Library/Preferences/SystemConfiguration/'
 
 function mvpdl() {
     mv ~/Desktop/$1 ~/notes/kcl/Year2/PDL/$2
@@ -35,9 +37,9 @@ function mvpdl() {
 # utility
 alias sz='source ~/.zshrc'
 alias reload='source ~/bin/dotfiles/zsh/aliases'
-alias ea='sublime -w ~/bin/dotfiles/zsh/aliases && reload'
-alias ee='sublime ~/bin/dotfiles/zsh/env'
-alias ei='sublime ~/bin/dotfiles/zsh/init'
+alias aa='atom -w ~/bin/dotfiles/zsh/aliases && reload'
+alias ae='atom ~/bin/dotfiles/zsh/env'
+alias ai='atom ~/bin/dotfiles/zsh/init'
 alias cl='clear'
 alias trash='rm -rf ~/.Trash/*' # cleans up the bin
 alias imgcat='zsh ~/bin/dotfiles/imgcat' # prints an image to the console
@@ -45,7 +47,8 @@ alias cpem='ditto ~/.emacs.d ~/dotFile/dotfiles/.emacs.d'
 alias cpspace='ditto ~/spacemacs/ ~/dotFile/dotfiles/spacemacs/'
 alias cpdot='ditto ~/bin/dotfiles/  ~/dotFile/dotfiles'
 alias cpv="rsync -poghb --backup-dir=/tmp/rsync -e /dev/null --progress --" #Show progress while file is copying
-
+alias hideiles='defaults write com.apple.finder AppleShowAllFiles NO' #Hides hidden files
+alias showHiddenFiles='defaults write com.apple.finder AppleShowAllFiles YES'
 # Processes
 alias tu='top -o cpu' # cpu
 alias tm='top -o vsize' # memory
@@ -57,7 +60,7 @@ alias gba='git branch -a'
 alias gc='git commit -v'
 alias gca='git commit -v -a'
 # Commit pending changes and quote all args as message
-function gg() { 
+function gg() {
     git commit -v -a -m "$*"
 }
 alias gco='git checkout'
@@ -76,13 +79,13 @@ function gch() {
 }
 
 # Setup a tracking branch from [remote] [branch_name]
-function gbt() { 
-    git branch --track $2 $1/$2 && git checkout $2 
+function gbt() {
+    git branch --track $2 $1/$2 && git checkout $2
 }
 # Quickly clobber a file and checkout
-function grf() { 
+function grf() {
     rm $1
-    git checkout $1 
+    git checkout $1
 }
 # Call from inside an initialized Git repo, with the name of the repo.
 function new-git() {
@@ -105,15 +108,15 @@ alias ll='ls -lhG'  # -l long listing, human readable, no group info
 alias lt='ls -lt' # sort with recently modified first
 alias md='mkdir -p'
 alias s='cd ..'   # up one dir
-function take() { 
+function take() {
     mkdir -p "$1"
-    cd "$1" 
+    cd "$1"
 }
 
 alias e='exit'
 alias k9="killall -9"
-function killnamed () { 
-    ps ax | grep $1 | cut -d ' ' -f 2 | xargs kill 
+function killnamed () {
+    ps ax | grep $1 | cut -d ' ' -f 2 | xargs kill
 }
 function zipr() {
     zip -r $1.zip $1
@@ -147,6 +150,12 @@ alias lsw='/System/Library/PrivateFrameworks/Apple80211.framework/Versions/A/Res
 alias jw='networksetup -setairportnetwork en0 WIFI_SSID_I_WANT_TO_JOIN WIFI_PASSWORD' # join network
 alias iname='networksetup -listallhardwareports' # Find network interface name
 
+# Game aliases
+
+# Heroes of might and magic 3. Horn of Abyss
+
+alias hoa='wine ~/Desktop/Heroes\ of\ Might\ and\ Magic\ 3\ Complete/HotA_launcher.exe'
+
 # Android
 
 # copy files from device in camera into Downloads
@@ -160,3 +169,14 @@ function androidCp() {
     adb pull /sdcard/Downloads/"$1" ~/Downloads
 }
 
+# Screen Shots
+
+alias lss='ls ~/Dropbox/Screenshots/'
+function mScreenshot(){
+    mv ~/Dropbox/Screenshots/Screenshot/"$1" ~/notes/kcl/Year2/FC2/images/"$2"
+}
+
+# youtube-dl
+function music-dl() {
+    youtube-dl --extract-audio --audio-format mp3 "$1"
+}

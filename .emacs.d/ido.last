@@ -76,6 +76,7 @@
 
 ;; ----- ido-work-directory-list -----
 (
+ "/Users/feroli/notes/interviews/"
  "/Users/Feroli/.emacs.d/"
  "/Users/Feroli/notes/kcl/Year2/PDL/"
  "/Users/Feroli/sites/twitter-clone/"
@@ -125,7 +126,6 @@
  "/Users/Feroli/notes/org/"
  "/Users/Feroli/notes/kcl/fc2/"
  "/Users/Feroli/sites/angularMaterialForecastBootstrap/"
- "/Users/Feroli/sites/angularMaterialForecastBootstrap/pages/"
 )
 
 ;; ----- ido-work-file-list -----
@@ -144,6 +144,8 @@
 
 ;; ----- ido-dir-file-cache -----
 (
+ ("/Users/feroli/notes/interviews/" (22838 26441 0 0) "twickets.org" "swordApak.org" "redgate.org" "payForlater.org" "notes.org" "leyton.org" "javaNotes.org" "gabryo.org" "gabryo.notes" "clearpeaks.org" "cisco.org" "cezanne.org" "../" "./")
+
  ("/Users/Feroli/sites/twitter-clone/" (22237 54067 0 0) "webpack.config.js" "vendor/" "tmp/" "test/" "README.rdoc" "Rakefile" "public/" "package.json" "node_modules/" "log/" "lib/" "Gemfile.lock" "Gemfile" "db/" "config.ru" "config/" "bin/" "app/" ".projectile" ".gitignore" ".git/" ".eslintrc" ".DS_Store" "../" "./")
 
  ("/Users/Feroli/notes/kcl/Year2/PDL/" (22237 31574 0 0) "w_7_8-SFUN.org" "w_7_8-SFUN.html" "w9-10_Logic-Programming-Languages.org" "w6-7_functional-language.org" "w6-7_functional-language.html" "w5_Structural-Operational-Semantics.org" "w5_Structural-Operational-Semantics.html" "w4_induction.org" "w4_induction.html" "w3_SIMP-and-Abstract-Machine.org" "w2_imperative-language.org" "w1_intro.org" "w1_intro.html" "tut.org" "theme-readtheorg.setup" "theme-bigblow.setup" "rule.png" "induction.png" "images/" "haskell.org" "haskell.html" "axiomProof.png" "../" "./")
@@ -341,8 +343,6 @@
  ("/Users/Feroli/sites/angulaFundamentals/3-angularjs-fundamentals-m3-services-exercise-files/Finished/09-AnchorScrollService/" (21925 844 0 0) "test/" "server.sh" "server.bat" "scripts/" "README.md" "package.json" "AppData.sln" "AppData/" "app/" "../" "./")
 
  ("/Users/Feroli/sites/angulaFundamentals/3-angularjs-fundamentals-m3-services-exercise-files/Finished/" (22190 10278 0 0) "17-CookieStore/" "16-FilterService/" "15-ExceptionHandlerSvc/" "14-TimeoutService/" "13-LocaleService/" "12-ParseService/" "11-CompileService/" "10-CacheFactoryService/" "09-AnchorScrollService/" "08-SavingDataResource/" "07-ResourceService/" "06-UsingHttpPromises/" "05-UpdateIisServer/" "04-UpdateNodeServer/" "03-HttpService/" "02-AnotherCustomService/" "01-CreatingYourFirstCustomService/" ".DS_Store" "../" "./")
-
- ("/Users/Feroli/sites/angulaFundamentals/3-angularjs-fundamentals-m3-services-exercise-files/" (22172 58628 0 0) "Original/" "Finished/" ".DS_Store" "../" "./")
 )
 
 ;; ----- ido-unc-hosts-cache -----

@@ -2,5 +2,3 @@
 . ~/bin/dotfiles/zsh/init
 . ~/bin/dotfiles/zsh/env
 . ~/bin/dotfiles/zsh/aliases
-
-

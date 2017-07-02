@@ -21,6 +21,7 @@
 			 '("marmalade" . "http://marmalade-repo.org/packages/")t )
 (package-initialize)
 
+(setq exec-path (append exec-path '("/Library/TeX/texbin")))
 
 ;;; Bootstrap use-package
 ;; Install use-package if it's not already installed.

@@ -1,4 +1,4 @@
-export EDITOR="sublime -w"
+export EDITOR="editor -nw"
 export PATH=~/bin:$PATH
 export PATH=$PATH:/bin
 
@@ -7,12 +7,21 @@ export PATH=/usr/local/sbin:$PATH
 export MONGO_PATH=/usr/local/mongodb
 export PATH=$PATH:$MONGO_PATH/bin
 export PATH=/usr/local/mysql/bin:$PATH
+export PATH=$PATH:/Library/TeX/texbin
 export PATH=/usr/local/bin:$PATH
 export PATH=/opt/local/bin:/opt/local/sbin:$PATH
+export PATH=/usr/local/bin:/usr/bin:/bin
+
+export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Applications/Emacs.app/Contents/MacOS/Emacs "$@":/Applications/Google Chrome.app/Contents/MacOS/Google Chrome "$@":/opt/X11/bin:/usr/local/git/bin $"@":/Library/TeX/texbin"
+export MANPATH="/usr/local/man:$MANPATH"
 
 # rvm
-[[ -s "$HOME/.rvm/scripts/rvm"  ]] && . "$HOME/.rvm/scripts/rvm"
+#[[ -s "$HOME/.rvm/scripts/rvm"  ]] && . "$HOME/.rvm/scripts/rvm"
 
+# nvm
+
+# export NVM_DIR=~/.nvm
+# . $(brew --prefix nvm)/nvm.sh
 
 # Java configuration
 export JAVA_HOME="$HOME/Applications/java"
