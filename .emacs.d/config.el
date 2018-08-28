@@ -749,9 +749,9 @@ the output."
   :bind ("M-x" . smex))
 (setq smex-save-file (expand-file-name ".smex-items" user-emacs-directory))
 
-(use-package aggressive-indent
-    :ensure t)
-(global-aggressive-indent-mode 1)
+;;;(use-package aggressive-indent
+   ;; :ensure t)
+;;;(global-aggressive-indent-mode 1)
 
 (use-package skewer-mode
   :commands skewer-mode

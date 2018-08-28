@@ -15,18 +15,32 @@ export PATH=/usr/local/bin:/usr/bin:/bin
 export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Applications/Emacs.app/Contents/MacOS/Emacs "$@":/Applications/Google Chrome.app/Contents/MacOS/Google Chrome "$@":/opt/X11/bin:/usr/local/git/bin $"@":/Library/TeX/texbin"
 export MANPATH="/usr/local/man:$MANPATH"
 
-# rvm
-#[[ -s "$HOME/.rvm/scripts/rvm"  ]] && . "$HOME/.rvm/scripts/rvm"
+export AUTH_DATASTORE_PROJECT_ID="microservices-149115";
 
-# nvm
+export AUTH_KMS_KEY_NAME=test-clients-key;
 
-# export NVM_DIR=~/.nvm
-# . $(brew --prefix nvm)/nvm.sh
+export AUTH_KMS_KEY_RING=test-key-ring;
+
+export AUTH_KMS_PROJECT_ID=microservices-149115
+
 
 # Java configuration
-export JAVA_HOME="$HOME/Applications/java"
+export JAVA_HOME="/usr/lib/jvm/java-8-oracle/"
 
+export ZPLUG_HOME="/home/fernandoa/.zplug/";
 
 test -e ${HOME}/.iterm2_shell_integration.bash && source ${HOME}/.iterm2_shell_integration.bash
 
 code () { VSCODE_CWD=/Users/Feroli open -n -b com.microsoft.VSCode --args  ;}
+
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="/home/fernandoa/.sdkman"
+[[ -s "/home/fernandoa/.sdkman/bin/sdkman-init.sh" ]] && source "/home/fernandoa/.sdkman/bin/sdkman-init.sh"
+
+# linux brew
+
+export PATH="/home/linuxbrew/.linuxbrew/bin:$PATH"
+
+
+
+#export PATH="/home/fernandoa/.zplug:$PATH"

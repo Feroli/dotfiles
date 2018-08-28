@@ -28,13 +28,12 @@ function mvpdl() {
     mv ~/Desktop/$1 ~/notes/kcl/Year2/PDL/$2
 }
 
-# Quicker cd
-#alias cg='cd /Library/Ruby/Gems/1.8/gems/'
-#function cr() {
-#cd ~/repos/$*
-#}
 
-# utility
+# CONFIG
+alias zshconfig="atom ~/bin/dotfiles/zsh/"
+alias ohmyzsh="atom ~/.oh-my-zsh"
+
+# UTILITY
 alias sz='source ~/.zshrc'
 alias reload='source ~/bin/dotfiles/zsh/aliases'
 alias aa='atom -w ~/bin/dotfiles/zsh/aliases && reload'
@@ -96,6 +95,11 @@ function new-git() {
     git config branch.master.merge refs/heads/master
     git config push.default current
 }
+
+# export diff
+
+alias expdiff='git diff master > ~/diff/diff.txt'
+alias realdiff='git diff master > ~/diff/realDiff.txt'
 
 # common
 alias cls='clear; ls'
@@ -180,3 +184,27 @@ function mScreenshot(){
 function music-dl() {
     youtube-dl --extract-audio --audio-format mp3 "$1"
 }
+
+
+# command line fuzzy finder
+
+#alias fzf ='find * -type f | fzf > selected'
+
+
+# FASD aliases
+
+alias a='fasd -a'        # any
+alias s='fasd -si'       # show / search / select
+alias d='fasd -d'        # directory
+alias f='fasd -f'        # file
+alias sd='fasd -sid'     # interactive directory selection
+alias sf='fasd -sif'     # interactive file selection
+alias z='fasd_cd -d'     # cd, same functionality as j in autojump
+alias zz='fasd_cd -d -i' # cd with interactive selection
+
+#eval '$(fasd --init auto)'
+
+
+alias dirsize='du -h --max-depth=1 | sort -hr' #size of dir  + breakdown
+alias se='rg --files | fzf' # find file with grep + fzf
+alias sev='vim $(rg --files | fzf)' # find file with grep + fzf and open with vim

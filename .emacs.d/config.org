@@ -21,7 +21,7 @@ brew install emacs --with-cocoa --with-imagemagick --with-gnutls
 
 #+begin_src emacs-lisp
 (setq user-full-name "Fernando Ania"
-      user-mail-address "javierania21@gmail.com")
+      user-mail-address "fernando.ania@paxport.net")
 #+end_src
 
 * Customise settings
@@ -468,8 +468,7 @@ consistent as it doesn't pad source blocks with leading spaces.
 Pandoc converts between a huge number of different file formats.
 
 #+begin_src emacs-lisp
-(use-package ox-pandoc
-  :ensure t)
+(use-package ox-pandoc :ensure t)
 #+end_src
 
 *** org-pandoc
@@ -500,7 +499,9 @@ I usually use [[*Helm][~helm-locate~]], which does live updates the spotlight
 search list as you type a query.
 
 #+begin_src emacs-lisp
+
 ;; mdfind is the command line interface to Spotlight
+
 (setq locate-command "mdfind")
 (global-set-key (kbd "C-c f l") 'locate)
 
@@ -546,6 +547,12 @@ the output."
 
 (global-set-key (kbd "C-x C-n") 'find-notes)
 (global-set-key (kbd "C-c f n") 'find-notes)
+#+end_src
+
+* ripgrep
+
+#+begin_src emacs-lisp
+(use-package ripgrep :ensure t)
 #+end_src
 
 * Shell
@@ -1323,9 +1330,9 @@ Smex integrates ido with ~M-x~. I used to use this before moving on to
 ** Aggressive indent
 
 #+BEGIN_SRC emacs-lisp
-(use-package aggressive-indent
-    :ensure t)
-(global-aggressive-indent-mode 1)
+;;;(use-package aggressive-indent
+   ;; :ensure t)
+;;;(global-aggressive-indent-mode 1)
 #+END_SRC
 ** Skewer mode
 
