@@ -99,7 +99,7 @@ function new-git() {
 # export diff
 
 alias expdiff='git diff master > ~/diff/diff.txt'
-alias realdiff='git diff master > ~/diff/realDiff.txt'
+alias realdiff='git diff master > ~/diff/realDiff.diff'
 
 # common
 alias cls='clear; ls'
