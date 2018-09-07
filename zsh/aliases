@@ -34,6 +34,12 @@ alias zshconfig="atom ~/bin/dotfiles/zsh/"
 alias ohmyzsh="atom ~/.oh-my-zsh"
 
 # UTILITY
+alias cat='bat'
+alias preview="fzf --preview 'bat --color \"always\" {}'"
+# add support for ctrl+o to open selected file in VS Code
+export FZF_DEFAULT_OPTS="--bind='ctrl-o:execute(atom {})+abort'"
+alias du="ncdu --color dark -rr -x --exclude .git --exclude node_modules"
+alias help='tldr'
 alias sz='source ~/.zshrc'
 alias reload='source ~/bin/dotfiles/zsh/aliases'
 alias aa='atom -w ~/bin/dotfiles/zsh/aliases && reload'
@@ -98,8 +104,9 @@ function new-git() {
 
 # export diff
 
-alias expdiff='git diff master > ~/diff/diff.txt'
-alias realdiff='git diff master > ~/diff/realDiff.diff'
+alias expdiff='git diff master > ~/diff/diff.diff'
+alias txtdiff='git diff master > ~/diff/diff.txt'
+
 
 # common
 alias cls='clear; ls'
