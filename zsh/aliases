@@ -37,14 +37,14 @@ alias ohmyzsh="atom ~/.oh-my-zsh"
 alias cat='bat'
 alias preview="fzf --preview 'bat --color \"always\" {}'"
 # add support for ctrl+o to open selected file in VS Code
-export FZF_DEFAULT_OPTS="--bind='ctrl-o:execute(atom {})+abort'"
+export FZF_DEFAULT_OPTS="--bind='ctrl-o:execute(vim {})+abort'"
 alias du="ncdu --color dark -rr -x --exclude .git --exclude node_modules"
 alias help='tldr'
 alias sz='source ~/.zshrc'
 alias reload='source ~/bin/dotfiles/zsh/aliases'
-alias aa='atom -w ~/bin/dotfiles/zsh/aliases && reload'
-alias ae='atom ~/bin/dotfiles/zsh/env'
-alias ai='atom ~/bin/dotfiles/zsh/init'
+alias aa='vim ~/bin/dotfiles/zsh/aliases'
+alias ae='vim ~/bin/dotfiles/zsh/env'
+alias ai='vim ~/bin/dotfiles/zsh/init'
 alias cl='clear'
 alias trash='rm -rf ~/.Trash/*' # cleans up the bin
 alias imgcat='zsh ~/bin/dotfiles/imgcat' # prints an image to the console
@@ -107,7 +107,6 @@ function new-git() {
 alias expdiff='git diff master > ~/diff/diff.diff'
 alias txtdiff='git diff master > ~/diff/diff.txt'
 
-
 # common
 alias cls='clear; ls'
 alias h='history'
@@ -131,6 +130,10 @@ function killnamed () {
 }
 function zipr() {
     zip -r $1.zip $1
+}
+
+function copy() {
+    cat $1 | xclip -selection clipboard
 }
 
 
@@ -215,3 +218,7 @@ alias zz='fasd_cd -d -i' # cd with interactive selection
 alias dirsize='du -h --max-depth=1 | sort -hr' #size of dir  + breakdown
 alias se='rg --files | fzf' # find file with grep + fzf
 alias sev='vim $(rg --files | fzf)' # find file with grep + fzf and open with vim
+
+#Paxport
+alias cmanager='java -jar ~/utility/ConfigManagerGUI_all.jar'
+
