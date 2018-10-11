@@ -42,7 +42,8 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug '~/my-prototype-plugin'
 
 Plug 'tpope/vim-fugitive'
-Plug 'ctrlpvim/ctrlp.vim'
+Plug 'kien/ctrlp.vim'
+
 
 
 Plug 'scrooloose/nerdtree'

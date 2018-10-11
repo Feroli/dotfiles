@@ -12,6 +12,7 @@ export PATH=/usr/local/bin:$PATH
 export PATH=/opt/local/bin:/opt/local/sbin:$PATH
 export PATH=/usr/local/bin:/usr/bin:/bin
 
+
 export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Applications/Emacs.app/Contents/MacOS/Emacs "$@":/Applications/Google Chrome.app/Contents/MacOS/Google Chrome "$@":/opt/X11/bin:/usr/local/git/bin $"@":/Library/TeX/texbin"
 export MANPATH="/usr/local/man:$MANPATH"
 
@@ -23,6 +24,10 @@ export AUTH_KMS_KEY_RING=test-key-ring;
 
 export AUTH_KMS_PROJECT_ID=microservices-149115
 
+# Watcher
+export IMPORTER_CONFIGMAP_NAME=importer-configs-cgm6bm976f
+export IMPORTER_GOOGLE_APPLICATION_CREDENTIALS_SECRET_NAME=cloudsql-key
+export WATCHER_K8S_NAMESPACE=rae
 
 # Java configuration
 export JAVA_HOME="/usr/lib/jvm/java-1.8.0-openjdk-amd64/"
