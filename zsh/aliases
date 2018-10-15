@@ -142,7 +142,7 @@ function copyFromBottomByLine() {
 }
 
 function paste() {
-   xclip -selection clipboard -o > $1
+    xsel -b > $1
 }
 
 
@@ -231,4 +231,3 @@ alias sev='vim $(rg --files | fzf)' # find file with grep + fzf and open with vi
 
 #Paxport
 alias cmanager='java -jar ~/utility/ConfigManagerGUI_all.jar'
-
