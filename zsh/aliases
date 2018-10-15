@@ -136,6 +136,16 @@ function copy() {
     cat $1 | xclip -selection clipboard
 }
 
+function copyFromBottomByLine() {
+   tail -n $1 $2 | copy
+
+}
+
+function paste() {
+   xclip -selection clipboard -o > $1
+}
+
+
 
 
 # Text editing
